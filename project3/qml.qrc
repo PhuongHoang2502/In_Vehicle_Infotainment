@@ -1,0 +1,112 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>HeadUnit/qml/CenterStack.qml</file>
+        <file>HeadUnit/qml/CircularGaugeBasic.qml</file>
+        <file>HeadUnit/qml/DashboardModel.qml</file>
+        <file>HeadUnit/qml/DashboardView.qml</file>
+        <file>HeadUnit/qml/IconButton.qml</file>
+        <file>HeadUnit/qml/main.qml</file>
+        <file>HeadUnit/qml/RPMGauageStyle.qml</file>
+        <file>HeadUnit/qml/SpeedGauageStyle.qml</file>
+        <file>HeadUnit/qml/ValueSource.qml</file>
+        <file>HeadUnit/Infotainment/infotainment.qml</file>
+        <file>HeadUnit/image/tr.jpg</file>
+        <file>HeadUnit/image/background.jpg</file>
+        <file>HeadUnit/image/shade.png</file>
+        <file>HeadUnit/image/Speedometer.png</file>
+        <file>HeadUnit/image/SportCarFloorShadow.png</file>
+        <file>HeadUnit/image/Tacometer.png</file>
+        <file>HeadUnit/image/Top Bar.png</file>
+        <file>HeadUnit/font/fontawesome.otf</file>
+        <file>HeadUnit/font/Nebula-Regular.otf</file>
+        <file>HeadUnit/Infotainment/LayoutManager.js</file>
+        <file>HeadUnit/icons/bottom.png</file>
+        <file>HeadUnit/icons/cloud.svg</file>
+        <file>HeadUnit/icons/right.svg</file>
+        <file>HeadUnit/icons/Vector 1.png</file>
+        <file>HeadUnit/icons/Vector 1.svg</file>
+        <file>HeadUnit/icons/Vector 2.png</file>
+        <file>HeadUnit/icons/Vector 2.svg</file>
+        <file>HeadUnit/icons/icons-left/icon-park-solid_right-two.svg</file>
+        <file>HeadUnit/icons/icons-left/mdi_car-battery.svg</file>
+        <file>HeadUnit/icons/icons-left/mdi_car-handbrake.svg</file>
+        <file>HeadUnit/icons/icons-left/mdi_car-tire-alert.svg</file>
+        <file>HeadUnit/icons/icons-left/mdi_oil.svg</file>
+        <file>HeadUnit/icons/icons-left/ph_engine-bold.svg</file>
+        <file>HeadUnit/icons/icons-left-checked/icon-park-solid_right-two.svg</file>
+        <file>HeadUnit/icons/icons-left-checked/mdi_car-battery.svg</file>
+        <file>HeadUnit/icons/icons-left-checked/mdi_car-handbrake.svg</file>
+        <file>HeadUnit/icons/icons-left-checked/mdi_car-tire-alert.svg</file>
+        <file>HeadUnit/icons/icons-left-checked/mdi_oil.svg</file>
+        <file>HeadUnit/icons/icons-left-checked/ph_engine-bold.svg</file>
+        <file>HeadUnit/icons/icons-right/icon-park-solid_right-two.svg</file>
+        <file>HeadUnit/icons/icons-right/mdi_car-brake-parking.svg</file>
+        <file>HeadUnit/icons/icons-right/mdi_car-light-dimmed.svg</file>
+        <file>HeadUnit/icons/icons-right/mdi_car-light-fog.svg</file>
+        <file>HeadUnit/icons/icons-right/mdi_car-light-high.svg</file>
+        <file>HeadUnit/icons/icons-right/mdi_seatbelt.svg</file>
+        <file>HeadUnit/icons/icons-right-checked/icon-park-solid_right-two.svg</file>
+        <file>HeadUnit/icons/icons-right-checked/mdi_car-brake-parking.svg</file>
+        <file>HeadUnit/icons/icons-right-checked/mdi_car-light-dimmed.svg</file>
+        <file>HeadUnit/icons/icons-right-checked/mdi_car-light-fog.svg</file>
+        <file>HeadUnit/icons/icons-right-checked/mdi_car-light-high.svg</file>
+        <file>HeadUnit/icons/icons-right-checked/mdi_seatbelt.svg</file>
+        <file>HeadUnit/icons/Road/car.png</file>
+        <file>HeadUnit/icons/Road/carRoad.svg</file>
+        <file>HeadUnit/icons/Road/Frame 33.png</file>
+        <file>HeadUnit/icons/Road/mdi_clock-time-four-outline.svg</file>
+        <file>HeadUnit/icons/Road/mdi_map-marker-outline.svg</file>
+        <file>HeadUnit/icons/Road/mdi_turn-right-bold.svg</file>
+        <file>HeadUnit/icons/Road/road.png</file>
+        <file>HeadUnit/icons/Road/road2.png</file>
+        <file>HeadUnit/icons/Road/road3.svg</file>
+        <file>HeadUnit/Infotainment/Parts/Theme.qml</file>
+        <file>HeadUnit/Infotainment/Parts/BottomBar/BottomBar.qml</file>
+        <file>HeadUnit/Infotainment/Parts/BottomBar/HVAC.qml</file>
+        <file>HeadUnit/Infotainment/Parts/BottomBar/VolumeControl.qml</file>
+        <file>HeadUnit/Infotainment/Parts/Icons/Icon.qml</file>
+        <file>HeadUnit/Infotainment/Parts/Icons/IconButton.qml</file>
+        <file>HeadUnit/Infotainment/Parts/Icons/LaunchButton.qml</file>
+        <file>HeadUnit/Infotainment/Parts/Icons/LaunchPad.qml</file>
+        <file>HeadUnit/Infotainment/Parts/LeftScreen/LeftScreen.qml</file>
+        <file>HeadUnit/Infotainment/Parts/RightScreen/NavigationScreenHelper.qml</file>
+        <file>HeadUnit/Infotainment/Parts/RightScreen/NavigationSearchBox.qml</file>
+        <file>HeadUnit/Infotainment/Parts/RightScreen/RightScreen.qml</file>
+        <file>HeadUnit/Infotainment/assets/calendar.png</file>
+        <file>HeadUnit/Infotainment/assets/camera.png</file>
+        <file>HeadUnit/Infotainment/assets/carRender.jpg</file>
+        <file>HeadUnit/Infotainment/assets/destination.gif</file>
+        <file>HeadUnit/Infotainment/assets/electric-car.png</file>
+        <file>HeadUnit/Infotainment/assets/focus.png</file>
+        <file>HeadUnit/Infotainment/assets/icons8-current-location-64.png</file>
+        <file>HeadUnit/Infotainment/assets/magnifying-glass.png</file>
+        <file>HeadUnit/Infotainment/assets/marker_blue.png</file>
+        <file>HeadUnit/Infotainment/assets/mute.png</file>
+        <file>HeadUnit/Infotainment/assets/open-padlock-silhouette.png</file>
+        <file>HeadUnit/Infotainment/assets/padlock.png</file>
+        <file>HeadUnit/Infotainment/assets/spotify.png</file>
+        <file>HeadUnit/Infotainment/assets/volume-high.png</file>
+        <file>HeadUnit/Infotainment/assets/volume-low.png</file>
+        <file>HeadUnit/Infotainment/assets/icons/arrows.png</file>
+        <file>HeadUnit/Infotainment/assets/icons/battery.png</file>
+        <file>HeadUnit/Infotainment/assets/icons/bluethooth.png</file>
+        <file>HeadUnit/Infotainment/assets/icons/clapperboard.png</file>
+        <file>HeadUnit/Infotainment/assets/icons/clapperboard2.png</file>
+        <file>HeadUnit/Infotainment/assets/icons/dslr-camera.png</file>
+        <file>HeadUnit/Infotainment/assets/icons/Headlight2.svg</file>
+        <file>HeadUnit/Infotainment/assets/icons/Headlights.svg</file>
+        <file>HeadUnit/Infotainment/assets/icons/icons.svg</file>
+        <file>HeadUnit/Infotainment/assets/icons/message.png</file>
+        <file>HeadUnit/Infotainment/assets/icons/phone-call.png</file>
+        <file>HeadUnit/Infotainment/assets/icons/Property 1=Default.svg</file>
+        <file>HeadUnit/Infotainment/assets/icons/radio.png</file>
+        <file>HeadUnit/Infotainment/assets/icons/Seatbelt.svg</file>
+        <file>HeadUnit/Infotainment/assets/icons/sedan-car-front.png</file>
+        <file>HeadUnit/Infotainment/assets/icons/speedometer-svgrepo-com.svg</file>
+        <file>HeadUnit/Infotainment/assets/icons/spotify.png</file>
+        <file>HeadUnit/Infotainment/assets/icons/telephone-call.png</file>
+        <file>HeadUnit/Infotainment/assets/icons/video.png</file>
+        <file>HeadUnit/Infotainment/assets/icons/zoom.png</file>
+    </qresource>
+</RCC>

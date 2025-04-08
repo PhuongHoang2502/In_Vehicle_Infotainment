@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>InstrumentCluster/qml/BasicGaugeStyle.qml</file>
+        <file>InstrumentCluster/qml/BatteryGaugeStyle.qml</file>
+        <file>InstrumentCluster/qml/main.qml</file>
+        <file>InstrumentCluster/qml/RPMGaugeStyle.qml</file>
+        <file>InstrumentCluster/qml/SpeedGaugeStyle.qml</file>
+        <file>InstrumentCluster/qml/ValueSource.qml</file>
+        <file>InstrumentCluster/font/Nebula-Regular.otf</file>
+        <file>InstrumentCluster/image/battery-icon.png</file>
+        <file>InstrumentCluster/image/logo.png</file>
+        <file>InstrumentCluster/image/turn-icon.png</file>
+    </qresource>
+</RCC>

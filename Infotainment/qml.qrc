@@ -1,0 +1,27 @@
+<RCC>
+    <qresource prefix="/">
+        <file>HeadUnit/qml/ValueSource.qml</file>
+        <file>HeadUnit/font/Nebula-Regular.otf</file>
+        <file>HeadUnit/qml/main.qml</file>
+        <file>HeadUnit/image/album.jpg</file>
+        <file>HeadUnit/image/gps.png</file>
+        <file>HeadUnit/image/logo.png</file>
+        <file>HeadUnit/image/off.png</file>
+        <file>HeadUnit/image/pause.png</file>
+        <file>HeadUnit/image/play.png</file>
+        <file>HeadUnit/image/seame.png</file>
+        <file>HeadUnit/image/turn-icon.png</file>
+        <file>HeadUnit/image/warning-icon.png</file>
+        <file>HeadUnit/image/wolfsberg.png</file>
+        <file>InstrumentCluster/qml/BasicGaugeStyle.qml</file>
+        <file>InstrumentCluster/qml/BatteryGaugeStyle.qml</file>
+        <file>InstrumentCluster/qml/main.qml</file>
+        <file>InstrumentCluster/qml/RPMGaugeStyle.qml</file>
+        <file>InstrumentCluster/qml/SpeedGaugeStyle.qml</file>
+        <file>InstrumentCluster/qml/ValueSource.qml</file>
+        <file>InstrumentCluster/image/battery-icon.png</file>
+        <file>InstrumentCluster/image/logo.png</file>
+        <file>InstrumentCluster/image/turn-icon.png</file>
+        <file>InstrumentCluster/font/Nebula-Regular.otf</file>
+    </qresource>
+</RCC>
