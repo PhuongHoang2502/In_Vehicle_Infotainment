@@ -167,5 +167,6 @@
         <file>Icons/spotify.svg</file>
         <file>Icons/spotify_circle.svg</file>
         <file>Icons/Adesh.jpg</file>
+        <file>startup.mp4</file>
     </qresource>
 </RCC>

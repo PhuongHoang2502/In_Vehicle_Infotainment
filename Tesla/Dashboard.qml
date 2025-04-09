@@ -4,6 +4,7 @@ import QtQuick.Controls 2.5
 import QtQuick.Layouts 1.3
 import QtLocation 5.12
 import QtPositioning 5.12
+import QtMultimedia 5.12
 // import GeneralMagic 2.0
 import "./Component"
 import "./whether/components"
@@ -26,6 +27,29 @@ ApplicationWindow {
 
     property string foreColor: Theme.fontColor
     property alias fontAwesomeFontLoader: fontAwesomeFontLoader
+
+//    // Loader to load main UI after video
+//    Loader {
+//        id: mainLoader
+//        anchors.fill: parent
+//        visible: false
+//    }
+
+//    // Startup Video
+//    Video {
+//        id: startupVideo
+//        anchors.fill: parent
+//        source: "qrc:/startup.mp4" // <-- make sure this path is correct
+//        autoPlay: true
+//        loops: 1
+//        z: 99 // ensure it's on top
+
+//        onStopped: {
+//            visible = false
+//            mainLoader.source = "Dashboard.qml" // your main UI file
+//            mainLoader.visible = true
+//        }
+//    }
 
     onApplyTheme: {
         if (mapInfo) {
@@ -1506,7 +1530,7 @@ ApplicationWindow {
                         color: "#73b2df"
                         radius: 20
                     }
-                    state: "loading"
+                    state: "ready"
                     states: [
                         State {
                             name: "loading"
