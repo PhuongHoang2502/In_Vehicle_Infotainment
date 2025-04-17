@@ -1,3 +1,6 @@
 sudo apt install libqt5svg5-dev
 sudo apt install qtlocation5-dev qtpositioning5-dev 
 sudo apt install qml-module-qtlocation qml-module-qtpositioning
+
+For video playing in Ubuntu: 
+sudo apt install ubuntu-restricted-extras gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav

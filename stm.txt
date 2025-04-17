@@ -1,0 +1,22 @@
+mcp2515: 
+https://www.micropeta.com/video138
+https://blog.naver.com/eziya76/221188525127
+https://ww1.microchip.com/downloads/en/DeviceDoc/MCP2515-Stand-Alone-CAN-Controller-with-SPI-20001801J.pdf
+https://www.beyondlogic.org/adding-can-controller-area-network-to-the-raspberry-pi/
+https://github.com/omarKmekkawy/RaspberryPi_MCP2515_CAN
+https://github.com/tolgakarakurt/CANBus-MCP2515-Raspi
+https://github.com/yasir-shahzad/MCP2515-CAN-Bus-Module
+
+socket can: 
+https://www.beyondlogic.org/example-c-socketcan-code/
+
+light sensor: 
+https://deepbluembedded.com/stm32-light-sensor-ldr-interfacing-ambient-light-sensor-project/
+
+adc: 
+https://deepbluembedded.com/stm32-adc-tutorial-complete-guide-with-examples/
+https://controllerstech.com/stm32-adc1-single-channel-polling-mode/
+
+ultra sonic sensor: 
+https://controllerstech.com/hcsr04-ultrasonic-sensor-and-stm32/
+https://deepbluembedded.com/stm32-ultrasonic-sensor-input-capture-library/
