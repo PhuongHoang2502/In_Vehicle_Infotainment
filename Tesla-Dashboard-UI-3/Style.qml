@@ -22,6 +22,10 @@ QtObject {
     readonly property color white: "#FFFFFF"
     readonly property string fontFamily: nunitoSans.name
 
+   //left UI
+    readonly property color fontColor: isDark ? "#FFFFFF" : "#0E0E0E"
+    readonly property color background: isDark ? "#0E0E0E" : "#F1F1F1"
+
     readonly property FontLoader nunitoSans: FontLoader{
         source: "qrc:/Nunito_Sans/NunitoSans-Regular.ttf"
     }

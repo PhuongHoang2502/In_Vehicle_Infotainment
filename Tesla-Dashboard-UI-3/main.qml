@@ -47,11 +47,15 @@ ApplicationWindow {
         onOpenLauncher: launcher.open()
     }
 
-    TopLeftButtonIconColumn {
-        z: 99
-        anchors.left: parent.left
-        anchors.top: headerLayout.bottom
-        anchors.leftMargin: 18
+//    TopLeftButtonIconColumn {
+//        z: 99
+//        anchors.left: parent.left
+//        anchors.top: headerLayout.bottom
+//        anchors.leftMargin: 18
+//    }
+    Shortcut {
+        sequence: "Ctrl+Q"
+        onActivated: Qt.quit()
     }
 
     RowLayout {
@@ -62,12 +66,370 @@ ApplicationWindow {
         Item {
             Layout.preferredWidth: 620
             Layout.fillHeight: true
-            Image {
-                anchors.centerIn: parent
-                source: Style.isDark ? "qrc:/icons/light/sidebar.png" : "qrc:/icons/dark/sidebar-light.png"
+//            Image {
+//                anchors.centerIn: parent
+//                source: Style.isDark ? "qrc:/icons/light/sidebar.png" : "qrc:/icons/dark/sidebar-light.png"
+//            }
+            RowLayout{
+                anchors.fill: parent
+                spacing: 0
+            Page{
+                id:leftArea
+                Layout.fillHeight: true
+                Layout.preferredWidth: 620
+                background: Rectangle{
+                    anchors.fill: parent
+                    color: Style.background
+                }
+                header: Rectangle{
+                    width: parent.width
+                    height: 60
+                    color: "transparent"
+
+                    IconButton{
+                        setIcon: "qrc:/icons/tire pressure.svg"
+                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.left: parent.left
+                        anchors.leftMargin: 20
+                    }
+                    IconButton{
+                        setIcon: "qrc:/icons/headlights.svg"
+                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.right: parent.right
+                        anchors.rightMargin: 20
+                    }
+                }
+
+                contentItem: Page{
+                    anchors.fill: parent
+                    padding: 0
+                    background: Rectangle{
+                        anchors.fill: parent
+                        color: "transparent"
+                    }
+                    header: Rectangle{
+                        width: parent.width
+                        height: 149
+                        color: "transparent"
+                        RowLayout {
+                            id: gearSelector
+                            spacing: 27
+                            anchors {
+                                bottom: parent.bottom
+                                bottomMargin: 10
+                                left: parent.left
+                                leftMargin: 20
+                            }
+
+                            property string selectedLabel: "D"
+
+                            function labelOpacity(letter) {
+                                return selectedLabel === letter ? 1.0 : 0.4;
+                            }
+
+                            Repeater {
+                                model: ["R", "P", "N", "D"]
+
+                                delegate: MouseArea {
+                                    property string letter: modelData
+                                    onClicked: gearSelector.selectedLabel = letter
+                                    hoverEnabled: true
+                                    cursorShape: Qt.PointingHandCursor
+
+                                    width: label.implicitWidth
+                                    height: label.implicitHeight
+
+                                    Label {
+                                        id: label
+                                        text: letter
+                                        opacity: gearSelector.labelOpacity(letter)
+                                        font.pixelSize: 20
+                                        font.family: "Montserrat"
+                                        font.bold: Font.Normal
+                                        color: Style.fontColor
+                                        Layout.alignment: Qt.AlignVCenter
+                                    }
+                                }
+                            }
+                        }
+
+//                        RowLayout{
+//                            spacing: 27
+//                            anchors{
+//                                bottom: parent.bottom
+//                                bottomMargin: 10
+//                                left: parent.left
+//                                leftMargin: 20
+//                            }
+
+//                            Label{
+//                                text: "R"
+//                                opacity: 0.4
+//                                font.pixelSize: 20
+//                                font.family: "Montserrat"
+//                                font.bold: Font.Normal
+//                                color: Style.fontColor
+//                                Layout.alignment: Qt.AlignVCenter
+//                            }
+//                            Label{
+//                                text: "P"
+//                                opacity: 0.4
+//                                font.pixelSize: 20
+//                                font.family: "Montserrat"
+//                                font.bold: Font.Normal
+//                                color: Style.fontColor
+//                                Layout.alignment: Qt.AlignVCenter
+//                            }
+//                            Label{
+//                                text: "N"
+//                                opacity: 0.4
+//                                font.pixelSize: 20
+//                                font.family: "Montserrat"
+//                                font.bold: Font.Normal
+//                                color: Style.fontColor
+//                                Layout.alignment: Qt.AlignVCenter
+//                            }
+//                            Label{
+//                                text: "D"
+//                                font.pixelSize: 20
+//                                font.family: "Montserrat"
+//                                font.bold: Font.Normal
+//                                color: Style.fontColor
+//                                Layout.alignment: Qt.AlignVCenter
+//                            }
+//                        }
+
+                        Label{
+                            text: "160"
+                            font.pixelSize: 45
+                            font.family: "Montserrat"
+                            font.bold: Font.Normal
+                            color: Style.fontColor
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            anchors.bottom: mphLabel.top
+                            anchors.bottomMargin: 5
+                        }
+
+
+                        Label{
+                            id:mphLabel
+                            text: "MPH"
+                            opacity: 0.4
+                            font.pixelSize: 20
+                            font.family: "Montserrat"
+                            font.bold: Font.Normal
+                            color: Style.fontColor
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            anchors.bottom: parent.bottom
+                            anchors.bottomMargin: 10
+                        }
+
+                        Rectangle{
+                            color: "grey"
+                            height: 2
+                            width: parent.width - 20
+                            anchors.leftMargin: 10
+                            anchors.rightMargin: 10
+                            anchors.left: parent.left
+                            anchors.right: parent.right
+                            anchors.bottom: parent.bottom
+                        }
+                    }
+
+                    contentItem:Page {
+                        padding: 0
+                        background: Rectangle{
+                            anchors.fill: parent
+                            color: "transparent"
+                        }
+                        header: Rectangle{
+                            width: parent.width
+                            height: 80
+                            color: "transparent"
+
+                            IconButton{
+                                setIcon: "qrc:/icons/steering wheel.svg"
+                                anchors.verticalCenter: parent.verticalCenter
+                                anchors.left: parent.left
+                                anchors.leftMargin: 20
+                            }
+
+                            RowLayout{
+                                spacing: 10
+                                anchors.centerIn: parent
+                                IconButton{
+                                    id:minus
+                                    setIcon:Style.isDark ? "qrc:/icons/dark/minus.svg" : "qrc:/icons/light/minus.svg"
+                                    Layout.alignment: Qt.AlignVCenter
+                                    onClicked: {
+                                        var number = parseInt(cruise_Control.text)
+                                        number = number - 1
+                                        cruise_Control.text = number
+                                    }
+                                }
+                                Rectangle{
+                                    border.width: 4
+                                    border.color: "grey"
+                                    color: "transparent"
+                                    width: minus.width
+                                    height: minus.height
+                                    radius: height/2
+                                    Layout.alignment: Qt.AlignVCenter
+                                    Label{
+                                        id:cruise_Control
+                                        text: "30"
+                                        opacity: 0.4
+                                        font.pixelSize: 24
+                                        font.family: "Montserrat"
+                                        font.bold: Font.DemiBold
+                                        color: Style.fontColor
+                                        anchors.centerIn: parent
+                                    }
+                                }
+
+                                IconButton{
+                                    id:plus
+                                    setIcon: Style.isDark ? "qrc:/icons/dark/plus.svg" : "qrc:/icons/light/plus.svg"
+                                    Layout.alignment: Qt.AlignVCenter
+                                    onClicked: {
+                                        var number = parseInt(cruise_Control.text)
+                                        number = number + 1
+                                        cruise_Control.text = number
+                                    }
+                                }
+                            }
+
+                            IconButton{
+                                setIcon: "qrc:/icons/Speed Limit.svg"
+                                anchors.verticalCenter: parent.verticalCenter
+                                anchors.right: parent.right
+                                anchors.rightMargin: 20
+                            }
+                        }
+                        contentItem:SwipeView {
+                            id: view
+                            currentIndex: 1
+                            anchors.fill: parent
+
+                            Page {
+                                id: firstPage
+                                padding: 0
+                                background: Rectangle{
+                                    anchors.fill: parent
+                                    color: "transparent"
+                                }
+                                Image{
+                                    source: Style.isDark ? "qrc:/icons/dark/Group.png" : "qrc:/icons/light/Group.png"
+                                    anchors.centerIn: parent
+                                }
+                            }
+
+                            Page {
+                                id: secondPage
+                                padding: 0
+                                background: Rectangle{
+                                    anchors.fill: parent
+                                    color: "transparent"
+                                }
+                                Image{
+                                    source: Style.isDark ? "qrc:/icons/dark/Group.png" : "qrc:/icons/light/Group.png"
+                                    anchors.centerIn: parent
+                                }
+                            }
+
+                            Page {
+                                id: thirdPage
+                                padding: 0
+                                background: Rectangle{
+                                    anchors.fill: parent
+                                    color: "transparent"
+                                }
+
+                                TButton{
+                                    text: "open"
+                                    anchors.horizontalCenter: model3.horizontalCenter
+                                    anchors.bottom: model3.top
+                                }
+
+                                Image{
+                                    id:glow
+                                    smooth: true
+                                    visible: Style.isDarkMode
+                                    source: "qrc:/icons/Cars/headlights.png"
+                                    anchors.bottom: model3.top
+                                    anchors.horizontalCenter: model3.horizontalCenter
+                                    anchors.bottomMargin: - 60
+                                }
+
+                                Image{
+                                    id:model3
+                                    source: Style.isDark ? "qrc:/icons/Cars/model 3_new.svg" : "qrc:/icons/Cars/model 3-1_new.svg"
+                                    anchors.centerIn: parent
+                                }
+
+                                TButton{
+                                    text: "open"
+                                    anchors.horizontalCenter: model3.horizontalCenter
+                                    anchors.top: model3.bottom
+                                }
+
+                                TButton{
+                                    property bool isGlow: Style.isDarkMode
+                                    setIcon: Style.isDark ? "qrc:/icons/dark/scale.svg" : "qrc:/icons/light/scale.svg"
+                                    anchors.verticalCenter: model3.verticalCenter
+                                    anchors.right: model3.left
+                                    anchors.leftMargin: 10
+                                    onClicked: {
+                                        isGlow = !isGlow
+                                        if(!isGlow){
+                                            glow.visible = false
+                                            model3.source = "qrc:/icons/Cars/model 3-1_new.svg"
+                                        }else{
+                                            glow.visible =   Style.isDark
+                                            model3.source =  Style.isDark ? "qrc:/icons/Cars/model 3_new.svg" : "qrc:/icons/Cars/model 3-1_new.svg"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+//                    footer: Rectangle{
+//                        width: parent.width
+//                        height: 120
+//                        color: "transparent"
+
+//                        RowLayout{
+//                            anchors.centerIn: parent
+//                            spacing: 100
+//                            IconButton{
+//                                setIcon: Style.isDark ? "qrc:/icons/camera.svg" : "qrc:/icons/dark/camera.svg"
+//                            }
+//                            IconButton{
+//                                setIcon: Style.isDark ? "qrc:/icons/power.svg" : "qrc:/icons/dark/power.svg"
+//                            }
+
+//                            IconButton{
+//                                setIcon: Style.isDark ? "qrc:/icons/microphone.svg" : "qrc:/icons/dark/microphone.svg"
+//                            }
+//                        }
+//                        footer:Item{
+//                            width: parent.width
+//                            height: 40
+//                            PageIndicator {
+//                                count: view.count
+//                                currentIndex: view.currentIndex
+//                                interactive: true
+//                                anchors.centerIn: parent
+//                            }
+//                        }
+//                    }
+
+
+                }
             }
         }
-
+    }
         NavigationMapHelperScreen {
             Layout.fillWidth: true
             Layout.fillHeight: true

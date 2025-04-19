@@ -119,5 +119,32 @@
         <file>animIcons/icons8-car.gif</file>
         <file>animIcons/icons8-destination.gif</file>
         <file>icons/dark/sidebar-light.png</file>
+        <file>icons/headlights.svg</file>
+        <file>icons/tire pressure.svg</file>
+        <file>icons/battery.svg</file>
+        <file>Components/TButton.qml</file>
+        <file>icons/Cars/headlights.png</file>
+        <file>icons/Cars/Model 3-1.svg</file>
+        <file>icons/Cars/model 3-1_new.svg</file>
+        <file>icons/Cars/Model 3-2.svg</file>
+        <file>icons/Cars/Model 3-2_new.svg</file>
+        <file>icons/Cars/Model 3.svg</file>
+        <file>icons/Cars/model 3_new.svg</file>
+        <file>icons/light/Group.png</file>
+        <file>icons/light/minus.svg</file>
+        <file>icons/light/plus.svg</file>
+        <file>icons/light/scale.svg</file>
+        <file>icons/dark/Group.png</file>
+        <file>icons/dark/lock.svg</file>
+        <file>icons/dark/minus.svg</file>
+        <file>icons/dark/plus.svg</file>
+        <file>icons/dark/Power.svg</file>
+        <file>icons/dark/scale.svg</file>
+        <file>icons/Speed Limit.svg</file>
+        <file>icons/steering wheel.svg</file>
+        <file>icons/camera.svg</file>
+        <file>icons/microphone.svg</file>
+        <file>icons/power.svg</file>
+        <file>icons/Tesla Logo.svg</file>
     </qresource>
 </RCC>
