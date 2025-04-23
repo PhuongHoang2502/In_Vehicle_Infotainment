@@ -1,5 +1,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QMediaPlayer>
+#include <QVideoWidget>
 
 int main(int argc, char *argv[])
 {

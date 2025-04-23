@@ -119,5 +119,7 @@
         <file>animIcons/icons8-car.gif</file>
         <file>animIcons/icons8-destination.gif</file>
         <file>icons/dark/sidebar-light.png</file>
+        <file>startup.mp4</file>
+        <file>SplashScreen.qml</file>
     </qresource>
 </RCC>

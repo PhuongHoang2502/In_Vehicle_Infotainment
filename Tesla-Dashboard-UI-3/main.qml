@@ -3,19 +3,32 @@ import QtQuick.Controls 2.5
 import QtQuick.Layouts 1.3
 import Style 1.0
 import QtGraphicalEffects 1.12
+import QtMultimedia 5.12
 import "Components"
 import "qrc:/LayoutManager.js" as Responsive
 
 ApplicationWindow {
     id: root
     width: 1920
-    height: 1200
+    height: 1080
     maximumHeight: height
     minimumHeight: height
     maximumWidth: width
     minimumWidth: width
     visible: true
     title: qsTr("Tesla Model 3")
+
+//    Video {
+//            id: splashVideo
+//            source: "qrc:/startup.mp4"
+//            autoPlay: true
+//            anchors.fill: parent
+//            onStopped: {
+//                splashVideo.visible = false
+//                root.visible = true
+//            }
+//        }
+
     onWidthChanged: {
         if(adaptive)
             adaptive.updateWindowWidth(root.width)

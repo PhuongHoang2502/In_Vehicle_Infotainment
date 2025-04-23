@@ -18,7 +18,7 @@ ApplicationWindow {
     id: root
     width: 1920
     height: 1080
-    visible: true
+    visible: false
     title: qsTr("Tesla Self Driving")
     color: "#17161c"
     //    flags: Qt.FramelessWindowHint
@@ -50,6 +50,16 @@ ApplicationWindow {
 //            mainLoader.visible = true
 //        }
 //    }
+    Video {
+            id: splashVideo
+            source: "qrc:/startup.mp4"
+            autoPlay: true
+            anchors.fill: parent
+            onStopped: {
+                splashVideo.visible = false
+                root.visible = true
+            }
+        }
 
     onApplyTheme: {
         if (mapInfo) {
