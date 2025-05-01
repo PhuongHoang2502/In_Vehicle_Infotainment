@@ -53,6 +53,7 @@ ApplicationWindow {
 //        anchors.top: headerLayout.bottom
 //        anchors.leftMargin: 18
 //    }
+
     Shortcut {
         sequence: "Ctrl+Q"
         onActivated: Qt.quit()
@@ -86,18 +87,35 @@ ApplicationWindow {
                     height: 60
                     color: "transparent"
 
-                    IconButton{
-                        setIcon: "qrc:/icons/tire pressure.svg"
-                        anchors.verticalCenter: parent.verticalCenter
-                        anchors.left: parent.left
-                        anchors.leftMargin: 20
-                    }
-                    IconButton{
-                        setIcon: "qrc:/icons/headlights.svg"
-                        anchors.verticalCenter: parent.verticalCenter
-                        anchors.right: parent.right
-                        anchors.rightMargin: 20
-                    }
+//                    IconButton{
+//                        setIcon: "qrc:/icons/tire pressure.svg"
+//                        anchors.verticalCenter: parent.verticalCenter
+//                        anchors.left: parent.left
+//                        anchors.leftMargin: 20
+//                    }
+//                    TopLeftButtonIconColumn {
+//                        z: 60
+//                        anchors.verticalCenter: parent.verticalCenter
+//                        anchors.right: parent.right
+//                        anchors.rightMargin: 20
+//                        height: 60
+//                    }
+                    RowLayout {
+                            anchors.fill: parent
+                            anchors.margins: 10
+                            spacing: 10
+
+                            IconButton {
+                                setIcon: "qrc:/icons/tire pressure.svg"
+                                Layout.alignment: Qt.AlignVCenter
+                            }
+
+                            Item { Layout.fillWidth: true } // Spacer
+
+                            TopLeftButtonIconColumn {
+                                Layout.alignment: Qt.AlignVCenter
+                            }
+                        }
                 }
 
                 contentItem: Page{
