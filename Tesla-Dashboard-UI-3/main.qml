@@ -199,8 +199,19 @@ ApplicationWindow {
 //                            }
 //                        }
 
-                        Label{
-                            text: "160"
+//                        Label{
+//                            text: "160"
+//                            font.pixelSize: 45
+//                            font.family: "Montserrat"
+//                            font.bold: Font.Normal
+//                            color: Style.fontColor
+//                            anchors.horizontalCenter: parent.horizontalCenter
+//                            anchors.bottom: mphLabel.top
+//                            anchors.bottomMargin: 5
+//                        }
+                        Label {
+                            id: speedLabel
+                            text: "0"
                             font.pixelSize: 45
                             font.family: "Montserrat"
                             font.bold: Font.Normal
@@ -208,8 +219,18 @@ ApplicationWindow {
                             anchors.horizontalCenter: parent.horizontalCenter
                             anchors.bottom: mphLabel.top
                             anchors.bottomMargin: 5
-                        }
 
+                            Timer {
+                                id: speedTimer
+                                interval: 1000 // 1 second
+                                running: true
+                                repeat: true
+                                onTriggered: {
+                                    // Generate random speed between 0 and 200
+                                    speedLabel.text = Math.floor(Math.random() * 201).toString()
+                                }
+                            }
+                        }
 
                         Label{
                             id:mphLabel
