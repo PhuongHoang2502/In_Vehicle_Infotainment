@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>ui/RightScreen/RightScreen.qml</file>
+        <file>ui/BottomBar/BottomBar.qml</file>
+        <file>ui/LeftScreen/LeftScreen.qml</file>
+        <file>ui/assets/car.jpg</file>
+        <file>ui/assets/bmwCar.png</file>
+        <file>ui/assets/carIcon.png</file>
+        <file>ui/assets/lock.png</file>
+        <file>ui/assets/unlock.png</file>
+        <file>main_can.qml</file>
+    </qresource>
+</RCC>

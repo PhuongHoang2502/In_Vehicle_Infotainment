@@ -9,8 +9,8 @@ import "qrc:/LayoutManager.js" as Responsive
 
 ApplicationWindow {
     id: root
-    width: 1920
-    height: 1080
+    width: 1900
+    height: 940
     maximumHeight: height
     minimumHeight: height
     maximumWidth: width

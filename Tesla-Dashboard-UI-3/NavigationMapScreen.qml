@@ -29,7 +29,7 @@ import Style 1.0
 Page {
     id: pageMap
 
-    property var currentLoc: QtPositioning.coordinate(28.4595, 77.0266)   // current location
+    property var currentLoc: QtPositioning.coordinate(10.7725, 106.6584)   // current location
     property bool isRoutingStart: false
     property bool runMapAnimation: false
     property bool enableGradient: true
@@ -62,7 +62,7 @@ Page {
 
         anchors.fill: parent
         copyrightsVisible: false
-        center: QtPositioning.coordinate(28.4595, 77.0266)
+        center: QtPositioning.coordinate(10.7725, 106.6584)
         zoomLevel: 13.3
         bearing: -80
 
@@ -92,7 +92,7 @@ Page {
         MapQuickItem{
             id: currentLocationMarker
 
-            coordinate: QtPositioning.coordinate(28.4595, 77.0266)
+            coordinate: QtPositioning.coordinate(10.7725, 106.6584)
             visible: false
             z: 1
 
@@ -184,7 +184,7 @@ Page {
 
             onRoutesChanged: {
                 map.center = routeModel.get(0).path[ (routeModel.get(0).path.length/2).toFixed(0) ]
-                destinationMarker.coordinate = QtPositioning.coordinate(26.2124,78.1772) //routeModel.get(0).path[ routeModel.get(0).path.length -1 ]
+                destinationMarker.coordinate = QtPositioning.coordinate(10.8781, 106.8064) //routeModel.get(0).path[ routeModel.get(0).path.length -1 ]
                 startMarker.coordinate = currentLoc
                 destinationMarker.visible = true
                 startMarker.visible = true
@@ -216,7 +216,7 @@ Page {
             property var path
             property int index
 
-            interval: 1000
+            interval: 1000 //1000
             repeat: true
             onTriggered: {
                 if(path.length > index)
@@ -243,7 +243,7 @@ Page {
                     value: "https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png"
                 }
             }
-            query: "Gwalior"
+            query: "Ho Chi Minh City, Vietnam"
 
             onLocationsChanged: {
                 if(count)
