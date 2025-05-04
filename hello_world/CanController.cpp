@@ -23,12 +23,21 @@ CanController::~CanController(){
 }
 
 bool CanController::initialize(){
+    QStringList plugins = QCanBus::instance()->plugins();
+    qDebug() << "Available QCanBus plugins:" << plugins;
+    if (!plugins.contains("socketcan")) {
+        qWarning() << "SocketCAN plugin not available. Ensure qtserialbus5-dev and libsocketcan-dev are installed.";
+        return false;
+    }
+
     QString errorString;
     m_canDevice = QCanBus::instance()->createDevice("socketcan", "can0", &errorString);
     if(!m_canDevice){
         qWarning() << "Failed to create CAN device:" << errorString;
         return false;
     }
+
+    m_canDevice->setConfigurationParameter(QCanBusDevice::BitRateKey, 500000);
 
     connect(m_canDevice, &QCanBusDevice::framesReceived, this, &CanController::receiveCanFrame);
     connect(m_canDevice, &QCanBusDevice::errorOccurred, this, &CanController::handleCanError);
@@ -40,6 +49,7 @@ bool CanController::initialize(){
         return false;
     }
 
+    qDebug() << "CAN device state:" << m_canDevice->state();
     qDebug() << "CAN device initialized successfully on can0";
     return true;
 }
