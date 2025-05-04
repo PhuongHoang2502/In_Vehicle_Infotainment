@@ -9,7 +9,7 @@
 class CanController : public QObject {
     Q_OBJECT
     Q_PROPERTY(int gear READ gear NOTIFY gearChanged)
-    Q_PROPERTY(int speed READ speed NOTIFY speedChanged)
+    Q_PROPERTY(uint16_t speed READ speed NOTIFY speedChanged)
     Q_PROPERTY(int light READ light NOTIFY lightChanged)
     Q_PROPERTY(float temperature READ temperature NOTIFY temperatureChanged)
     Q_PROPERTY(int humidity READ humidity NOTIFY humidityChanged)
@@ -20,7 +20,7 @@ class CanController : public QObject {
 private:
     QCanBusDevice *m_canDevice;
     int m_gear;
-    int m_speed;
+    uint16_t m_speed;
     int m_light;
     float m_temperature;
     int m_humidity;
@@ -38,7 +38,7 @@ public:
         return m_gear;
     }
 
-    int speed() const {
+    uint16_t speed() const {
         return m_speed;
     }
 
