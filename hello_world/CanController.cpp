@@ -80,7 +80,6 @@ void CanController::receiveCanFrame() {
             }
             break;
         case 0x101: // Speed
-            if (payload.size() >= 1) {
                 if (payload.size() >= 2) {
                 uint16_t newSpeed = (static_cast<uint8_t>(payload[0]) << 8) | static_cast<uint8_t>(payload[1]);
                 if (newSpeed != m_speed) {
