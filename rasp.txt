@@ -3,3 +3,15 @@ sudo apt-get install qtcreator
 sudo apt-get install qtdeclarative5-dev
 sudo apt-get install qml-module-qtquick-window2
 sudo apt install qml-module-qtquick-controls2
+
+qt serial: 
+https://gist.github.com/awesomebytes/ed90785324757b03c8f01e3ffa36d436
+# To get rid of the private/qobject_p.h error
+sudo apt-get install qtbase5-private-dev
+# Build and install qtserialbus
+git clone git://code.qt.io/qt/qtserialbus.git
+cd qtserialbus
+git checkout 5.12
+qmake
+make -j$(nproc)
+sudo make install
