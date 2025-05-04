@@ -34,7 +34,7 @@ bool CanController::initialize()
     }
 
     QString errorString;
-    m_canDevice = QCanBus::instance()->createDevice("socketcan", "can0", &errorString);
+    m_canDevice = QCanBus::instance()->createDevice("socketcan", "vcan0", &errorString);
     if (!m_canDevice)
     {
         qWarning() << "Failed to create CAN device:" << errorString;
