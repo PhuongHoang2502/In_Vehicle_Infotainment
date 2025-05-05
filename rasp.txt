@@ -4,6 +4,9 @@ sudo apt-get install qtdeclarative5-dev
 sudo apt-get install qml-module-qtquick-window2
 sudo apt install qml-module-qtquick-controls2
 sudo apt install libsocketcan2 libsocketcan-dev
+sudo apt install libqt5svg5-dev
+sudo apt install qtmultimedia5-dev
+sudo apt-get install libqt5multimedia5-plugins
 
 qt serial: 
 https://gist.github.com/awesomebytes/ed90785324757b03c8f01e3ffa36d436

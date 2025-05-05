@@ -39,6 +39,12 @@ ApplicationWindow {
 
     function createSettingsDialog(){
         var component = Qt.createComponent("qrc:/Component/SettingsDialog.qml");
+        if( component.status != Component.Ready )
+        {
+            if( component.status == Component.Error )
+                console.debug("Error:"+ component.errorString() );
+            return; // or maybe throw
+        }
         var win = component.createObject(root);
         if (win !== null) {
             // Calculate the x-coordinate to center the win object
@@ -55,6 +61,12 @@ ApplicationWindow {
 
     function createMusicDialog(){
         var component = Qt.createComponent("qrc:/Music/qml/Music.qml");
+        if( component.status != Component.Ready )
+        {
+            if( component.status == Component.Error )
+                console.debug("Error:"+ component.errorString() );
+            return; // or maybe throw
+        }
         var win = component.createObject(root);
         if (win !== null) {
             win.x = leftArea.width + 20;

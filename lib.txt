@@ -1,3 +1,5 @@
+sudo apt install qtmultimedia5-dev
+sudo apt-get install libqt5multimedia5-plugins
 sudo apt-get install qml-module-qtquick-window2
 sudo apt-get install qml-module-qtquick2
 sudo apt-get install qml-module-qtgraphicaleffects
@@ -8,6 +10,7 @@ sudo apt install libqt5svg5-dev
 sudo apt install qtlocation5-dev qtpositioning5-dev 
 sudo apt install qml-module-qtlocation qml-module-qtpositioning
 sudo apt install libsocketcan2 libsocketcan-dev
+
 qt serial: 
 https://gist.github.com/awesomebytes/ed90785324757b03c8f01e3ffa36d436
 # To get rid of the private/qobject_p.h error
