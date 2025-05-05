@@ -3,6 +3,8 @@
 #include <QQmlContext>
 #include <QtQml>
 #include <QIcon>
+#include "CanController.h"
+
 int main(int argc, char *argv[])
 {
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
@@ -10,7 +12,13 @@ int main(int argc, char *argv[])
 #endif
     QGuiApplication app(argc, argv);
 
+    CanController canController;
+    if (!canController.initialize()) {
+        qDebug() << "Failed to initialize CAN controller";
+        return -1;
+    }
     QQmlApplicationEngine engine;
+    engine.rootContext()->setContextProperty("canController", &canController);
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     qmlRegisterSingletonType(QUrl(QStringLiteral("qrc:/Style.qml")), "Style", 1, 0, "Style");
     QObject::connect(
