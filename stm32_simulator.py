@@ -83,7 +83,7 @@ def main():
             if msg:
                 logging.info(f"Received ID=0x{msg.arbitration_id:X}, Data=" + " ".join(f"{b:02X}" for b in msg.data))
 
-            time.sleep(1)  # Send every 1 second
+            time.sleep(3)  # Send every 1 second
 
     except KeyboardInterrupt:
         logging.info("Simulator stopped")

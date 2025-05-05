@@ -140,7 +140,7 @@ ApplicationWindow {
                             }
 
                             Repeater {
-                                model: ["R", "P", "N", "D"]
+                                model: ["P", "R", "N", "D"]
 
                                 delegate: Label {
                                     text: modelData
@@ -216,7 +216,7 @@ ApplicationWindow {
 //                        }
                         Label {
                             id: speedLabel
-                            text: "0"
+                            text: canController.speed
                             font.pixelSize: 45
                             font.family: "Montserrat"
                             font.bold: Font.Normal
@@ -224,22 +224,11 @@ ApplicationWindow {
                             anchors.horizontalCenter: parent.horizontalCenter
                             anchors.bottom: mphLabel.top
                             anchors.bottomMargin: 5
-
-                            Timer {
-                                id: speedTimer
-                                interval: 1000 // 1 second
-                                running: true
-                                repeat: true
-                                onTriggered: {
-                                    // Generate random speed between 0 and 200
-                                    speedLabel.text = Math.floor(Math.random() * 201).toString()
-                                }
-                            }
                         }
 
                         Label{
                             id:mphLabel
-                            text: "MPH"
+                            text: "km/h"
                             opacity: 0.4
                             font.pixelSize: 20
                             font.family: "Montserrat"
