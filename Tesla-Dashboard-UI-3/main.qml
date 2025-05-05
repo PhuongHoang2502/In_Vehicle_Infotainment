@@ -139,34 +139,21 @@ ApplicationWindow {
                                 leftMargin: 20
                             }
 
-                            property string selectedLabel: "D"
-
-                            function labelOpacity(letter) {
-                                return selectedLabel === letter ? 1.0 : 0.4;
-                            }
-
                             Repeater {
                                 model: ["R", "P", "N", "D"]
 
-                                delegate: MouseArea {
-                                    property string letter: modelData
-                                    onClicked: gearSelector.selectedLabel = letter
-                                    hoverEnabled: true
-                                    cursorShape: Qt.PointingHandCursor
-
-                                    width: label.implicitWidth
-                                    height: label.implicitHeight
-
-                                    Label {
-                                        id: label
-                                        text: letter
-                                        opacity: gearSelector.labelOpacity(letter)
-                                        font.pixelSize: 20
-                                        font.family: "Montserrat"
-                                        font.bold: Font.Normal
-                                        color: Style.fontColor
-                                        Layout.alignment: Qt.AlignVCenter
+                                delegate: Label {
+                                    text: modelData
+                                    opacity: {
+                                        // Map CAN gear values to letters
+                                        var gearMap = {0: "P", 1: "R", 2: "N", 3: "D"};
+                                        return gearMap[canController.gear] === modelData ? 1.0 : 0.4;
                                     }
+                                    font.pixelSize: 20
+                                    font.family: "Montserrat"
+                                    font.bold: Font.Normal
+                                    color: Style.fontColor
+                                    Layout.alignment: Qt.AlignVCenter
                                 }
                             }
                         }
