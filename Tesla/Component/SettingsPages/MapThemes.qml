@@ -1,7 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.5
 import QtQuick.Layouts 1.3
-import GeneralMagic 2.0
+//import GeneralMagic 2.0
 import "../"
 
 import Theme 1.0
@@ -20,13 +20,13 @@ Item {
         }
     }
 
-    ContentStore {
-        id: contentStore
-        type: ContentItem.Type.ViewStyleHighDPI
-        onStatusChanged: {
-            console.log("Status = " +status)
-        }
-    }
+//    ContentStore {
+//        id: contentStore
+//        type: ContentItem.Type.ViewStyleHighDPI
+//        onStatusChanged: {
+//            console.log("Status = " +status)
+//        }
+//    }
 
     ListView {
         id: list
@@ -43,12 +43,19 @@ Item {
                 id: row
                 spacing: 10
 
-                IconView {
-                    iconSource: modelData.imagePreview
+//                IconView {
+//                    iconSource: modelData.imagePreview
+//                    Layout.maximumHeight: row.height
+//                    Layout.maximumWidth: row.height
+//                    width: height
+//                    height: row.height
+//                }
+
+                Image {
+                    source: modelData.imagePreview
                     Layout.maximumHeight: row.height
                     Layout.maximumWidth: row.height
-                    width: height
-                    height: row.height
+                    fillMode: Image.PreserveAspectFit
                 }
 
                 ColumnLayout {
@@ -105,15 +112,23 @@ Item {
         visible: false
 
         RowLayout{
-            IconView {
+//            IconView {
+//                visible: root.contentItem.imagePreviewAvailable
+//                iconSource: root.contentItem.imagePreview
+//                Layout.maximumHeight: 55
+//                Layout.maximumWidth: 55
+//                width: 55
+//                height: 55
+//            }
+            Image {
                 visible: root.contentItem.imagePreviewAvailable
-                iconSource: root.contentItem.imagePreview
+                source: root.contentItem.imagePreview
                 Layout.maximumHeight: 55
                 Layout.maximumWidth: 55
                 width: 55
                 height: 55
+                fillMode: Image.PreserveAspectFit
             }
-
             TSlider{
                 width: 680
                 height: 60

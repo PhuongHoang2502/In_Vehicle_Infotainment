@@ -1,2 +1,3 @@
 *.pro.user*
 tempCodeRunnerFile.py
+build*Debug*
