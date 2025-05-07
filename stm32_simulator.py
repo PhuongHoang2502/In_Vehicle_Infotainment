@@ -31,7 +31,7 @@ def main():
             gear = random.choice(gear_values)
             msg = can.Message(arbitration_id=0x100, data=[gear], is_extended_id=False)
             bus.send(msg)
-            logging.info(f"Sent ID=0x100, Data={gear:02X}")
+            logging.info(f"Sent ID=0x100, Data={gear:02X} ({'P' if gear == 0 else 'R' if gear == 1 else 'N' if gear == 2 else 'D'})")
 
             # Speed (ID 0x101, 2 bytes, big-endian)
             speed = random.randint(*speed_range)
@@ -44,7 +44,7 @@ def main():
             light = random.randint(*light_range)
             msg = can.Message(arbitration_id=0x102, data=[light], is_extended_id=False)
             bus.send(msg)
-            logging.info(f"Sent ID=0x102, Data={light:02X}")
+            logging.info(f"Sent ID=0x102, Data={light:02X} ({light}%)")
 
             # Temperature (ID 0x103, 2 bytes, big-endian, x10)
             temp = random.randint(*temp_range)
@@ -57,7 +57,7 @@ def main():
             humidity = random.randint(*humidity_range)
             msg = can.Message(arbitration_id=0x104, data=[humidity], is_extended_id=False)
             bus.send(msg)
-            logging.info(f"Sent ID=0x104, Data={humidity:02X}")
+            logging.info(f"Sent ID=0x104, Data={humidity:02X} ({humidity}%)")
 
             # Distance (ID 0x105, 2 bytes, big-endian)
             distance = random.randint(*distance_range)

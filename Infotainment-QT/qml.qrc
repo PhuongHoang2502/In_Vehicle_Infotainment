@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>HomeScreen.qml</file>
+        <file>ClusterScreen.qml</file>
+        <file>NavigationScreen.qml</file>
+        <file>VideoSplash.qml</file>
+        <file>Intro.mp4</file>
+        <file>Icons/01_logobachkhoasang.png</file>
+        <file>Icons/01_logobachkhoatoi.png</file>
+        <file>Icons/LogoBK.png</file>
+        <file>Theme.qml</file>
+    </qresource>
+</RCC>
