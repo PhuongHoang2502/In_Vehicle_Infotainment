@@ -37,8 +37,8 @@ int main(int argc, char *argv[])
     qmlRegisterType<AppModel>("WeatherInfo", 1, 0, "AppModel");
     qRegisterMetaType<WeatherData>();
 
-    const QUrl url(QStringLiteral("qrc:/main.qml"));
-//    const QUrl url(QStringLiteral("qrc:/Dashboard.qml"));
+//    const QUrl url(QStringLiteral("qrc:/main.qml"));
+    const QUrl url(QStringLiteral("qrc:/Dashboard.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated, &app, [url](QObject *obj, const QUrl &objUrl)
                      {
             if (!obj && url == objUrl)

@@ -10,5 +10,53 @@
         <file>Icons/01_logobachkhoatoi.png</file>
         <file>Icons/LogoBK.png</file>
         <file>Theme.qml</file>
+        <file>Components/Header.qml</file>
+        <file>Components/IconButton.qml</file>
+        <file>Icons/steering wheel.svg</file>
+        <file>Icons/Navigation.png</file>
+        <file>Icons/Cluster.png</file>
+        <file>Components/Footer.qml</file>
+        <file>Icons/defrost.svg</file>
+        <file>Icons/Driver Temp.svg</file>
+        <file>Icons/fan.svg</file>
+        <file>Icons/heater.svg</file>
+        <file>Icons/model3-icon.svg</file>
+        <file>Icons/music.svg</file>
+        <file>Icons/output-0.png</file>
+        <file>Icons/output-1.png</file>
+        <file>Icons/phone.svg</file>
+        <file>Icons/seat.svg</file>
+        <file>Icons/volume.svg</file>
+        <file>Image/Dark/Background.png</file>
+        <file>Image/Dark/Sidebar.png</file>
+        <file>Image/Light/Background.png</file>
+        <file>Image/Light/Sidebar.png</file>
+        <file>Icons/Dark/Bluetooth.svg</file>
+        <file>Icons/Dark/Cell_Signal.svg</file>
+        <file>Icons/Light/Bluetooth.svg</file>
+        <file>Icons/Light/Cell_Signal.svg</file>
+        <file>Icons/mhx.png</file>
+        <file>Icons/Apps.png</file>
+        <file>Components/LaunchPad.qml</file>
+        <file>Icons/Apps/AOV.png</file>
+        <file>Icons/Apps/calendar.svg</file>
+        <file>Icons/Apps/FaceBook.png</file>
+        <file>Icons/Apps/front-defrost.svg</file>
+        <file>Icons/Apps/Insta.jpg</file>
+        <file>Icons/Apps/Messenger.png</file>
+        <file>Icons/Apps/phone.svg</file>
+        <file>Icons/Apps/radio.svg</file>
+        <file>Icons/Apps/rear-defrost.svg</file>
+        <file>Icons/Apps/seat-warmer.svg</file>
+        <file>Icons/Apps/spotify.svg</file>
+        <file>Icons/Apps/steering-wheel-warmer.svg</file>
+        <file>Icons/Apps/wiper.svg</file>
+        <file>Icons/Apps/YouTube.png</file>
+        <file>Icons/Apps/zoom.svg</file>
+        <file>Icons/Apps/GGMeet.png</file>
+        <file>Icons/Apps/Gmail.jpg</file>
+        <file>Icons/Apps/Notion.png</file>
+        <file>Icons/Apps/Zalo.svg</file>
+        <file>Components/LaunchPadButton.qml</file>
     </qresource>
 </RCC>

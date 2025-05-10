@@ -1,125 +1,183 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
+import "./Components"
 
 Rectangle {
     id: homeScreen
-    color: "#f0f0f0"
+    color: "transparent"
+
+    // Properties for dialog positioning
+    property Item root: parent
+    property Item leftArea
+    property Item rightArea
 
     signal navigateToCluster()
     signal navigateToNavigation()
 
+    // Background image that extends behind the header
+    Image {
+        id: background
+        anchors.fill: parent
+        source: Theme.currentTheme === "dark" 
+            ? "qrc:/Image/Dark/Background.png" 
+            : "qrc:/Image/Light/Background.png"
+        fillMode: Image.PreserveAspectCrop
+        asynchronous: true
+        cache: true
+        z: -1 // Place behind other components
+    }
+
     ColumnLayout {
         anchors.fill: parent
-        anchors.margins: 30
-        spacing: 30
+        spacing: 0  // Remove spacing between components
 
-        // Title
-        Text {
-            Layout.alignment: Qt.AlignHCenter
-            text: "Home Screen"
-            font.pixelSize: 32
-            font.bold: true
-        }
+        // Header (transparent)
+        Header {
+            id: header
+            Layout.fillWidth: true
+            Layout.preferredHeight: 60
+            color: "transparent" // Ensure header is transparent
 
-        // Subtitle
-        Text {
-            Layout.alignment: Qt.AlignHCenter
-            text: "Welcome to your vehicle's infotainment system"
-            font.pixelSize: 18
-        }
+            RowLayout {
+                id: navigationButtons
+                spacing: 32
+                anchors.centerIn: parent
 
-        // Spacer to push buttons to the middle
-        Item { Layout.fillHeight: true }
+                // Define common button properties to reduce repetition
+                property real iconSize: 40
 
-        // Navigation Buttons
-        RowLayout {
-            Layout.alignment: Qt.AlignHCenter
-            spacing: 40
+                // Cluster button
+                IconButton {
+                    id: clusterBtn
+                    roundIcon: true
+                    iconHeight: navigationButtons.iconSize + 15
+                    iconWidth: navigationButtons.iconSize + 15
+                    setIcon: "qrc:/Icons/Cluster.png"
+                    onClicked: navigateToCluster()
 
-            Button {
-                text: "Go to Cluster"
-                Layout.preferredWidth: 200
-                Layout.preferredHeight: 60
-                font.pixelSize: 18
-                onClicked: navigateToCluster()
-            }
-
-            Button {
-                text: "Go to Navigation"
-                Layout.preferredWidth: 200
-                Layout.preferredHeight: 60
-                font.pixelSize: 18
-                onClicked: navigateToNavigation()
-            }
-        }
-
-        // Spacer to push theme controls to the bottom
-        Item { Layout.fillHeight: true }
-
-        // Theme Controls at bottom center
-        Column {
-            id: themeControls
-            anchors.horizontalCenter: parent.horizontalCenter
-            spacing: 10
-            Row{
-                spacing: 10
-                Button {
-                    text: Theme.currentMode === Theme.Mode.Auto ? "Auto Theme ☀️" : "Manual Theme"
-                    onClicked: Theme.toggleAuto()
-                    font.pixelSize: 16
-                    background: Rectangle {
-                        color: "transparent"
-                    }
-                    contentItem: Text {
-                        text: parent.text
-                        color: "black" // or "black" based on your default theme, or bind to Theme.colors.onSurface
-                        horizontalAlignment: Text.AlignHCenter
-                        verticalAlignment: Text.AlignVCenter
-                    }
+                    // Optional tooltip
+                    ToolTip.visible: hovered
+                    ToolTip.text: qsTr("Cluster")
+                    ToolTip.delay: 500
                 }
 
-                // Theme color indicator
-                Rectangle {
-                    width: 30
-                    height: 30
-                    radius: 5
-                    color: Theme.colors.background
-                    border.color: Theme.colors.primary
+                // Home/Theme toggle button
+                IconButton {
+                    id: homeBtn
+                    roundIcon: true
+                    iconHeight: navigationButtons.iconSize
+                    iconWidth: navigationButtons.iconSize
+                    setIcon: "qrc:/Icons/01_logobachkhoatoi.png"
+                    onClicked: Theme.setManualTheme(Theme.currentTheme === "dark")
+
+                    // Optional tooltip
+                    ToolTip.visible: hovered
+                    ToolTip.text: Theme.currentTheme === "dark" ? qsTr("Switch to Light Mode") : qsTr("Switch to Dark Mode")
+                    ToolTip.delay: 500
+                }
+
+                // Navigation button
+                IconButton {
+                    id: naviBtn
+                    roundIcon: true
+                    iconHeight: navigationButtons.iconSize
+                    iconWidth: navigationButtons.iconSize
+                    setIcon: "qrc:/Icons/Navigation.png"
+                    setIconColor: Theme.colors.text
+                    onClicked: navigateToNavigation()
+
+                    // Optional tooltip
+                    ToolTip.visible: hovered
+                    ToolTip.text: qsTr("Navigation")
+                    ToolTip.delay: 500
                 }
             }
 
+            // Right section with icons and user profile
             Row {
-                visible: true
+                id: rightControls
                 spacing: 10
+                anchors {
+                    right: parent.right
+                    rightMargin: 40
+                    verticalCenter: parent.verticalCenter
+                }
 
-                Button {
-                    text: "☀️ Light"
-                    onClicked: Theme.setManualTheme(true)
-                    enabled: Theme.currentTheme !== "light"
-                    background: Rectangle { color: "transparent" }
-                    contentItem: Text {
-                        text: parent.text
-                        color: "black"
-                        horizontalAlignment: Text.AlignHCenter
-                        verticalAlignment: Text.AlignVCenter
+                // Connection icons
+                Row {
+                    spacing: 2
+                    IconButton {
+                        iconHeight: 40
+                        iconWidth: 40
+                        roundIcon: true
+                        setIcon: Theme.currentTheme === "dark" ? "qrc:/Icons/Light/Bluetooth.svg" : "qrc:/Icons/Dark/Bluetooth.svg"
+                    }
+
+                    IconButton {
+                        iconHeight: 42
+                        iconWidth: 42
+                        roundIcon: true
+                        setIcon: Theme.currentTheme === "dark" ? "qrc:/Icons/Light/Cell_Signal.svg" : "qrc:/Icons/Dark/Cell_Signal.svg"
                     }
                 }
 
-                Button {
-                    text: "🌙 Dark"
-                    onClicked: Theme.setManualTheme(false)
-                    enabled: Theme.currentTheme !== "dark"
-                    background: Rectangle { color: "transparent" }
-                    contentItem: Text {
-                        text: parent.text
-                        color: "black"
-                        horizontalAlignment: Text.AlignHCenter
-                        verticalAlignment: Text.AlignVCenter
+                // User profile
+                Row {
+                    spacing: 10
+
+                    IconButton {
+                        roundIcon: true
+                        implicitHeight: 55
+                        implicitWidth: 55
+                        iconHeight: 42
+                        iconWidth: 42
+                        radius: 16
+                        setIcon: "qrc:/Icons/mhx.png"
+                        enabled: false
+                    }
+
+                    Label {
+                        text: qsTr("Hoang")
+                        font {
+                            pixelSize: 16
+                            family: "Montserrat"
+                            bold: Font.Normal
+                        }
+                        color: Theme.colors.text
+                        anchors.verticalCenter: parent.verticalCenter
                     }
                 }
             }
+        }
 
+        // Main content area (transparent to show background)
+        Item {
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+            
+            // Your content here will appear over the background image
+            // Make sure content has appropriate transparency or styling
+            // to work well with the background image
+        }
+
+        LaunchPad {
+            id: launchPad
+            x: (parent.width - width) / 2
+            y: (parent.height - height) / 2 + footer.height - 20
+        }
+        // Footer
+        Footer {
+            id: footer
+            Layout.fillWidth: true
+            Layout.preferredHeight: 120
+            
+            onOpenLaunchpad: launchPad.open()
+            
+            // Pass necessary properties for dialog positioning
+            root: homeScreen.root
+            leftArea: homeScreen.leftArea
+            rightArea: homeScreen.rightArea
         }
     }
 }
