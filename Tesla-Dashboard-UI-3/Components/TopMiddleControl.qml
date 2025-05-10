@@ -34,6 +34,8 @@ RowLayout {
         Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
         scale: 0.95
         icon.source: Style.isDark ? "qrc:/icons/top_header_icons/dark/Sentry.svg" : "qrc:/icons/top_header_icons/Sentry.svg"
-        onClicked: Style.isDark  = !Style.isDark
+        //onClicked: Style.isDark  = !Style.isDark
+        onClicked: Style.toggleDarkMode()
     }
+
 }

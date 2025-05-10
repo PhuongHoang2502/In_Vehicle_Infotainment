@@ -30,10 +30,20 @@ QtObject {
         source: "qrc:/Nunito_Sans/NunitoSans-Regular.ttf"
     }
 
+    property bool isDark: canController ? (canController.light < 50) : true
 
-    property bool isDark: true
+    //property bool isDark: true
+    //property bool isDark: canController.light < 50
+
+
     property bool mapAreaVisible: false
     property string theme: isDark ? "dark" : "light"
+
+
+    function toggleDarkMode() {
+            isDark = !isDark // Đảo giá trị tạm thời
+            isDark = Qt.binding(function() { return canController ? (canController.light < 50) : true }) // Khôi phục binding
+        }
 
     function getImageBasedOnTheme() {
         return `qrc:/icons/${theme}/background_image.png`;

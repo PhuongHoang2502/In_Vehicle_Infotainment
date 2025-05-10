@@ -9,7 +9,7 @@ import "qrc:/LayoutManager.js" as Responsive
 ApplicationWindow {
     id: root
     width: 1840
-    height: 900
+    height: 800
     maximumHeight: height
     minimumHeight: height
     maximumWidth: width
@@ -100,11 +100,43 @@ ApplicationWindow {
 //                        anchors.rightMargin: 20
 //                        height: 60
 //                    }
+//                    RowLayout {
+//                            anchors.fill: parent
+//                            anchors.margins: 10
+//                            spacing: 10
+
+//                            IconButton {
+//                                setIcon: "qrc:/icons/tire pressure.svg"
+//                                Layout.alignment: Qt.AlignVCenter
+//                            }
+
+//                            Item { Layout.fillWidth: true } // Spacer
+
+//                            TopLeftButtonIconColumn {
+//                                Layout.alignment: Qt.AlignVCenter
+//                            }
+//                        }
                     RowLayout {
                             anchors.fill: parent
                             anchors.margins: 10
                             spacing: 10
-
+                            RowLayout {
+                                            Layout.alignment: Qt.AlignVCenter
+                                            spacing: 5
+                                            Image {
+                                                Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+                                                source: "qrc:/icons/top_header_icons/battery.svg"
+                                            }
+                                            Text {
+                                                Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+                                                color: Style.isDark ? Style.white : Style.black10
+//                                                text: qsTr("%0 %").arg(batteryPercentage)
+                                                text: "90" + "% "
+                                                font.family: "Inter"
+                                                font.bold: Font.Bold
+                                                font.pixelSize: 18
+                                            }
+                                        }
                             IconButton {
                                 setIcon: "qrc:/icons/tire pressure.svg"
                                 Layout.alignment: Qt.AlignVCenter

@@ -56,6 +56,13 @@ bool CanController::initialize()
 
     qDebug() << "CAN device state:" << m_canDevice->state();
     qDebug() << "CAN device initialized successfully on can0";
+
+
+
+    // Gắn tín hiệu thay đổi speed/light để gọi logic điều khiển đèn pha
+    connect(this, &CanController::speedChanged, this, &CanController::updateAutoHeadlight);
+    connect(this, &CanController::lightChanged, this, &CanController::updateAutoHeadlight);
+
     return true;
 }
 
@@ -98,6 +105,7 @@ void CanController::receiveCanFrame()
                     m_speed = newSpeed;
                     qDebug() << "Speed updated to:" << m_speed;
                     emit speedChanged();
+                    updateAutoHeadlight();
                 }
             }
             break;
@@ -109,6 +117,7 @@ void CanController::receiveCanFrame()
                 {
                     m_light = newLight;
                     emit lightChanged();
+                    updateAutoHeadlight();
                 }
             }
             break;
@@ -211,6 +220,40 @@ void CanController::toggleLed()
 {
     m_ledOn = !m_ledOn;
     QByteArray data(1, m_ledOn ? 1 : 0);
-    sendCanMessage(0x201, data);
+    sendCanMessage(0x202, data);
     emit ledOnChanged();
 }
+
+
+void CanController::setAutoBeamEnabled(bool enabled)
+{
+    if (m_autoBeamEnabled != enabled) {
+        m_autoBeamEnabled = enabled;
+        emit autoBeamEnabledChanged();
+        updateAutoHeadlight();  // Gửi lại theo trạng thái mới
+    }
+}
+
+void CanController::updateAutoHeadlight()
+{
+    int headlightValue;
+
+    if (!m_autoBeamEnabled) {
+        headlightValue = 1; // LOW beam mặc định
+    } else {
+        if (m_speed < 10 && m_light > 50)
+            headlightValue = 0;
+        else if (m_speed >= 10 && m_light < 30)
+            headlightValue = 2;
+        else
+            headlightValue = 1;
+    }
+
+    if (headlightValue != m_headlightOutput) {
+        m_headlightOutput = headlightValue;
+        QByteArray data(1, static_cast<char>(m_headlightOutput));
+        sendCanMessage(0x201, data);
+        emit headlightOutputChanged();
+    }
+}
+

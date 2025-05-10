@@ -50,18 +50,18 @@ RowLayout {
     }
 
     RowLayout {
-        Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
-        Image {
-            Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
-            source: "qrc:/icons/top_header_icons/battery.svg"
-        }
-        Text {
-            Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
-            color: Style.isDark ? Style.white : Style.black10
-            text: qsTr("%0 %").arg(batteryPercentage)
-            font.family: "Inter"
-            font.bold: Font.Bold
-            font.pixelSize: 18
-        }
+//        Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
+//        Image {
+//            Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+//            source: "qrc:/icons/top_header_icons/battery.svg"
+//        }
+//        Text {
+//            Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+//            color: Style.isDark ? Style.white : Style.black10
+//            text: qsTr("%0 %").arg(batteryPercentage)
+//            font.family: "Inter"
+//            font.bold: Font.Bold
+//            font.pixelSize: 18
+//        }
     }
 }

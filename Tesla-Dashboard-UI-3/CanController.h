@@ -16,6 +16,7 @@ class CanController : public QObject {
     Q_PROPERTY(int distance READ distance NOTIFY distanceChanged)
     Q_PROPERTY(bool buzzerEnabled READ buzzerEnabled NOTIFY buzzerEnabledChanged)
     Q_PROPERTY(bool ledOn READ ledOn NOTIFY ledOnChanged)
+    Q_PROPERTY(bool autoBeamEnabled READ autoBeamEnabled WRITE setAutoBeamEnabled NOTIFY autoBeamEnabledChanged)
 
 private:
     QCanBusDevice *m_canDevice;
@@ -27,8 +28,12 @@ private:
     int m_distance;
     bool m_buzzerEnabled;
     bool m_ledOn;
+    int m_headlightOutput = 0;  // 0 = OFF, 1 = LOW, 2 = HIGH
+    bool m_autoBeamEnabled;
 
     void sendCanMessage(quint32 id, const QByteArray &data);
+    void updateAutoHeadlight();
+
 
 public:
     explicit CanController(QObject *parent = nullptr);
@@ -65,8 +70,9 @@ public:
     bool ledOn() const {
         return m_ledOn;
     }
-
+    bool autoBeamEnabled() const { return m_autoBeamEnabled; }
     bool initialize();
+    void setAutoBeamEnabled(bool enabled);
 
 public slots:
     void toggleBuzzer();
@@ -81,6 +87,9 @@ signals:
     void distanceChanged();
     void buzzerEnabledChanged();
     void ledOnChanged();
+    void autoBeamEnabledChanged();
+    void headlightOutputChanged();
+
 
 private slots:
     void receiveCanFrame();
