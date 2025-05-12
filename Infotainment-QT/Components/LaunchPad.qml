@@ -27,18 +27,13 @@ Popup {
 
             LaunchPadButton {
                 Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
-                icon.source: "qrc:/Icons/Apps/front-defrost.svg"
-                text: "Front Defrost"
+                icon.source: "qrc:/Icons/Apps/camera.svg"
+                text: "Camera"
             }
             LaunchPadButton {
                 Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
-                icon.source: "qrc:/Icons/Apps/rear-defrost.svg"
-                text: "Rear Defrost"
-            }
-            LaunchPadButton {
-                Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
-                icon.source: "qrc:/Icons/Apps/seat-warmer.svg"
-                text: "Seat Warmer"
+                icon.source: "qrc:/Icons/Apps/brightness.svg"
+                text: "Light"
             }
             LaunchPadButton {
                 Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
@@ -49,6 +44,21 @@ Popup {
                 Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
                 icon.source: "qrc:/Icons/Apps/wiper.svg"
                 text: "Wipers"
+            }
+            LaunchPadButton {
+                Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
+                icon.source: "qrc:/Icons/Apps/seat-warmer.svg"
+                text: "Seat Warmer"
+            }
+            LaunchPadButton {
+                Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
+                icon.source: "qrc:/Icons/Apps/front-defrost.svg"
+                text: "Front Defrost"
+            }
+            LaunchPadButton {
+                Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
+                icon.source: "qrc:/Icons/Apps/rear-defrost.svg"
+                text: "Rear Defrost"
             }
         }
 

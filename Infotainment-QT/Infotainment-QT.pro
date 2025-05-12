@@ -1,4 +1,4 @@
-QT += quick serialbus multimedia
+QT += quick serialbus multimedia location positioning
 
 CONFIG += c++11
 

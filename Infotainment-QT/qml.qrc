@@ -58,5 +58,17 @@
         <file>Icons/Apps/Notion.png</file>
         <file>Icons/Apps/Zalo.svg</file>
         <file>Components/LaunchPadButton.qml</file>
+        <file>Icons/Auto_Light.svg</file>
+        <file>Icons/Auto_Light2.svg</file>
+        <file>Icons/Fog_Light.svg</file>
+        <file>Icons/High_Beam.png</file>
+        <file>Icons/Low_Beam.svg</file>
+        <file>Image/Dark/Sidebar2.png</file>
+        <file>Image/Light/Sidebar2.png</file>
+        <file>Image/headlights.png</file>
+        <file>Image/model 3-1_new.svg</file>
+        <file>Image/model 3_new.svg</file>
+        <file>Icons/Apps/camera.svg</file>
+        <file>Icons/Apps/brightness.svg</file>
     </qresource>
 </RCC>
