@@ -127,6 +127,7 @@ Rectangle {
                     spacing: 10
 
                     IconButton {
+                        id: avatarButton
                         roundIcon: true
                         implicitHeight: 55
                         implicitWidth: 55
@@ -134,7 +135,38 @@ Rectangle {
                         iconWidth: 42
                         radius: 16
                         setIcon: "qrc:/Icons/mhx.png"
-                        enabled: false
+//                        enabled: false
+
+                        // Full-screen window component
+                        property var fullScreenImageWindow: null
+
+                        // Add click handler to show full-screen image
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                // Create full-screen window if it doesn't exist
+                                if (!avatarButton.fullScreenImageWindow) {
+                                    var component = Qt.createComponent("qrc:/Components/Avatar.qml");
+
+                                    // Check if component is ready
+                                    if (component.status === Component.Ready) {
+                                        avatarButton.fullScreenImageWindow = component.createObject(null);
+
+                                        // Check if object creation was successful
+                                        if (avatarButton.fullScreenImageWindow) {
+                                            avatarButton.fullScreenImageWindow.show();
+                                        } else {
+                                            console.error("Failed to create full-screen window object");
+                                        }
+                                    } else if (component.status === Component.Error) {
+                                        console.error("Error creating component:", component.errorString());
+                                    }
+                                } else {
+                                    // If window already exists, just show it
+                                    avatarButton.fullScreenImageWindow.show();
+                                }
+                            }
+                        }
                     }
 
                     Label {

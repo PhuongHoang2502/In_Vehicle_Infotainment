@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.11.0, 2025-04-07T23:53:09. -->
+<!-- Written by QtCreator 4.11.0, 2025-05-14T00:05:33. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -282,8 +282,9 @@
     </valuelist>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/home/phuonghoang/learning/qt/project3/project3.pro</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/home/phuonghoang/learning/qt/project3/project3.pro</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">project32</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/home/phuonghoang/learning/qt/In_Vehicle_Infotainment/project3/project3.pro</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/home/phuonghoang/learning/qt/In_Vehicle_Infotainment/project3/project3.pro</value>
     <value type="QString" key="RunConfiguration.Arguments"></value>
     <value type="bool" key="RunConfiguration.Arguments.multi">false</value>
     <value type="QString" key="RunConfiguration.OverrideDebuggerStartup"></value>

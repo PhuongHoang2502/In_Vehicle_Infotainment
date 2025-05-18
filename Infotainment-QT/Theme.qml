@@ -8,7 +8,7 @@ QtObject {
     // Theme modes
     enum Mode { Auto, Light, Dark }
     property int currentMode: Theme.Mode.Auto
-    property string currentTheme: "dark" // Computed property
+    property string currentTheme: "dark"
 
     // Light sensor value (0-1 where 1 is brightest)
     property real lightSensorValue: canController.light

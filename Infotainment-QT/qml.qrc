@@ -70,5 +70,27 @@
         <file>Image/model 3_new.svg</file>
         <file>Icons/Apps/camera.svg</file>
         <file>Icons/Apps/brightness.svg</file>
+        <file>Components/Avatar.qml</file>
+        <file>Icons/Left.svg</file>
+        <file>Icons/Right.svg</file>
+        <file>Components/GearSelector.qml</file>
+        <file>Image/Guide_line.png</file>
+        <file>Image/rvc_example.jpg</file>
+        <file>Icons/Dark/current_location.svg</file>
+        <file>Icons/Dark/gear.svg</file>
+        <file>Icons/Dark/minus.svg</file>
+        <file>Icons/Dark/navigation.svg</file>
+        <file>Icons/Dark/plus.svg</file>
+        <file>Icons/Light/current_location.svg</file>
+        <file>Icons/Light/gear.svg</file>
+        <file>Icons/Light/minus.svg</file>
+        <file>Icons/Light/navigation.svg</file>
+        <file>Icons/Light/plus.svg</file>
+        <file>Components/NavigationMap.qml</file>
+        <file>Icons/CarMarker.png</file>
+        <file>Icons/LocationMarker.png</file>
+        <file>Icons/icons8-car.gif</file>
+        <file>Icons/icons8-destination.gif</file>
+        <file>Components/DynamicMap.qml</file>
     </qresource>
 </RCC>

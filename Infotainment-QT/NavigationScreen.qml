@@ -7,7 +7,7 @@ import "./Components"
 
 Rectangle {
     id: navigationScreen
-    color: "transparent"
+    color: Theme.currentTheme === "dark" ? "#0E0E0E" : "#F1F1F1"
 
     // Define signals for navigation
     signal navigateToHome()
@@ -127,7 +127,7 @@ Rectangle {
     // Main content area (constrained to avoid footer overlap)
     Item {
         anchors.top: parent.top
-        anchors.bottom: footer.top
+        anchors.bottom: parent.bottom
         anchors.left: parent.left
         anchors.right: parent.right
         z: 1
@@ -145,239 +145,161 @@ Rectangle {
                     anchors.fill: parent
                     color: Theme.currentTheme === "dark" ? "#0E0E0E" : "#F1F1F1"
                 }
+                header: Rectangle {
+                    anchors.top: parent.top
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    anchors.topMargin: 60
+                    width: parent.width
+                    height: 100
+                    color: "transparent"
 
-                contentItem: ColumnLayout {
-                    anchors.fill: parent
-                    anchors.topMargin: 60 // Offset content below header
-                    spacing: 0
-
-                    // Top bar (Auto_Light buttons)
-                    Rectangle {
-                        Layout.fillWidth: true
-                        height: 60
-                        color: "transparent"
-
+                    RowLayout {
+                        spacing: 2
+                        anchors {
+                            bottom: parent.bottom
+                            bottomMargin: 5
+                            left: parent.left
+                            right: parent.right
+                        }
+                        IconButton {
+                            id: lowBeam
+                            iconHeight: 40
+                            iconWidth: 40
+                            roundIcon: true
+                            setIcon: "qrc:/Icons/Low_Beam.svg"
+                            opacity: canController.headlight === 1 ? 1 : 0.3
+                            anchors.leftMargin: 20
+                            anchors.left: parent.left
+                            onClicked: (canController.autoMode && canController.headlight === 1) ? canController.toggleAutoMode() : canController.toggleLowBeam()
+                        }
+                        IconButton {
+                            anchors.left: lowBeam.right
+                            anchors.leftMargin: 2
+                            iconHeight: 40
+                            iconWidth: 40
+                            roundIcon: true
+                            setIcon: "qrc:/Icons/High_Beam.png"
+                            opacity: canController.headlight === 2 ? 1 : 0.3
+                            onClicked: (canController.autoMode && canController.headlight === 2) ? canController.toggleAutoMode() : canController.toggleHighBeam()
+                        }
                         IconButton {
                             iconHeight: 40
                             iconWidth: 40
                             roundIcon: true
                             setIcon: "qrc:/Icons/Auto_Light.svg"
-                            anchors.verticalCenter: parent.verticalCenter
-                            anchors.left: parent.left
-                            anchors.leftMargin: 20
-                        }
-                        IconButton {
-                            iconHeight: 40
-                            iconWidth: 40
-                            roundIcon: true
-                            setIcon: "qrc:/Icons/Auto_Light2.svg"
-                            anchors.verticalCenter: parent.verticalCenter
+                            opacity: canController.autoMode ? 1 : 0.3
                             anchors.right: parent.right
                             anchors.rightMargin: 20
+                            onClicked: canController.toggleAutoMode()
                         }
-                    }
-
-                    // Gear and speed display
-                    Rectangle {
-                        Layout.fillWidth: true
-                        height: 149
-                        color: "transparent"
-
-                        RowLayout {
-                            spacing: 27
-                            anchors {
-                                bottom: parent.bottom
-                                bottomMargin: 10
-                                left: parent.left
-                                leftMargin: 20
-                            }
-
-                            Label {
-                                text: "R"
-                                opacity: 0.4
-                                font.pixelSize: 20
-                                font.family: "Montserrat"
-                                font.bold: Font.Normal
-                                color: Theme.fontColor
-                                Layout.alignment: Qt.AlignVCenter
-                            }
-                            Label {
-                                text: "P"
-                                opacity: 0.4
-                                font.pixelSize: 20
-                                font.family: "Montserrat"
-                                font.bold: Font.Normal
-                                color: Theme.fontColor
-                                Layout.alignment: Qt.AlignVCenter
-                            }
-                            Label {
-                                text: "N"
-                                opacity: 0.4
-                                font.pixelSize: 20
-                                font.family: "Montserrat"
-                                font.bold: Font.Normal
-                                color: Theme.fontColor
-                                Layout.alignment: Qt.AlignVCenter
-                            }
-                            Label {
-                                text: "D"
-                                font.pixelSize: 20
-                                font.family: "Montserrat"
-                                font.bold: Font.Normal
-                                color: Theme.fontColor
-                                Layout.alignment: Qt.AlignVCenter
-                            }
-                        }
-
                         Label {
-                            text: "160"
+                            text: canController.speed
                             font.pixelSize: 45
                             font.family: "Montserrat"
                             font.bold: Font.Normal
-                            color: Theme.fontColor
+                            color: Theme.currentTheme === "dark" ? "#FFFFFF" : "#0E0E0E"
                             anchors.horizontalCenter: parent.horizontalCenter
-                            anchors.bottom: mphLabel.top
-                            anchors.bottomMargin: 5
-                        }
-
-                        Label {
-                            id: mphLabel
-                            text: "MPH"
-                            opacity: 0.4
-                            font.pixelSize: 20
-                            font.family: "Montserrat"
-                            font.bold: Font.Normal
-                            color: Theme.fontColor
-                            anchors.horizontalCenter: parent.horizontalCenter
-                            anchors.bottom: parent.bottom
-                            anchors.bottomMargin: 10
-                        }
-
-                        RowLayout {
-                            spacing: 10
-                            anchors.right: parent.right
-                            anchors.rightMargin: 20
-                            anchors.bottom: parent.bottom
-                            anchors.bottomMargin: 10
-                            Label {
-                                text: "90 %"
-                                opacity: 0.4
-                                font.pixelSize: 20
-                                font.family: "Montserrat"
-                                font.bold: Font.Normal
-                                color: Theme.fontColor
-                                Layout.alignment: Qt.AlignVCenter
-                            }
-
-                            IconButton {
-                                Layout.alignment: Qt.AlignVCenter
-                                iconHeight: 40
-                                iconWidth: 40
-                                roundIcon: true
-                                setIcon: "qrc:/Icons/High_Beam.png"
-                            }
-                        }
-
-                        Rectangle {
-                            color: "grey"
-                            height: 2
-                            width: parent.width - 20
-                            anchors.leftMargin: 10
-                            anchors.rightMargin: 10
-                            anchors.left: parent.left
-                            anchors.right: parent.right
-                            anchors.bottom: parent.bottom
                         }
                     }
 
-                    // Cruise control section
                     Rectangle {
-                        Layout.fillWidth: true
-                        height: 80
-                        color: "transparent"
-
-                        IconButton {
-                            iconHeight: 40
-                            iconWidth: 40
-                            roundIcon: true
-                            setIcon: "qrc:/Icons/Low_Beam.svg"
-                            anchors.verticalCenter: parent.verticalCenter
-                            anchors.left: parent.left
-                            anchors.leftMargin: 20
-                        }
-
-                        RowLayout {
-                            spacing: 10
-                            anchors.centerIn: parent
-                            IconButton {
-                                id: minus
-                                setIcon: Theme.currentTheme === "dark" ? "qrc:/Icons/unknown/dark/minus.svg" : "qrc:/Icons/unknown/light/minus.svg"
-                                Layout.alignment: Qt.AlignVCenter
-                                onClicked: {
-                                    var number = parseInt(cruise_Control.text)
-                                    number = number - 1
-                                    cruise_Control.text = number
-                                }
+                        id: line
+                        color: "grey"
+                        height: 2
+                        width: parent.width - 20
+                        anchors.leftMargin: 10
+                        anchors.rightMargin: 10
+                        anchors.left: parent.left
+                        anchors.right: parent.right
+                        anchors.bottom: parent.bottom
+                    }
+                    IconButton {
+                        id: leftTurnButton
+                        anchors.top: line.bottom
+                        anchors.topMargin: 10
+                        iconHeight: 40
+                        iconWidth: 40
+                        roundIcon: true
+                        setIcon: "qrc:/Icons/Left.svg"
+                        opacity: 0.3
+                        anchors.left: parent.left
+                        anchors.leftMargin: 20
+                        onClicked: canController.toggleLeftTurn()
+                        // Blinking animation when left turn is on
+                        SequentialAnimation {
+                            id: leftTurnAnimation
+                            running: canController.leftTurn
+                            loops: Animation.Infinite
+                            NumberAnimation {
+                                target: leftTurnButton
+                                property: "opacity"
+                                to: 1
+                                duration: 300 // 0.25s
                             }
-                            Rectangle {
-                                border.width: 4
-                                border.color: "grey"
-                                color: "transparent"
-                                width: minus.width
-                                height: minus.height
-                                radius: height/2
-                                Layout.alignment: Qt.AlignVCenter
-                                Label {
-                                    id: cruise_Control
-                                    text: "30"
-                                    opacity: 0.4
-                                    font.pixelSize: 24
-                                    font.family: "Montserrat"
-                                    font.bold: Font.DemiBold
-                                    color: Theme.fontColor
-                                    anchors.centerIn: parent
-                                }
+                            NumberAnimation {
+                                target: leftTurnButton
+                                property: "opacity"
+                                to: 0.3
+                                duration: 300 // 0.25s
                             }
-
-                            IconButton {
-                                id: plus
-                                setIcon: Theme.currentTheme === "dark" ? "qrc:/Icons/unknown/dark/plus.svg" : "qrc:/Icons/unknown/light/plus.svg"
-                                Layout.alignment: Qt.AlignVCenter
-                                onClicked: {
-                                    var number = parseInt(cruise_Control.text)
-                                    number = number + 1
-                                    cruise_Control.text = number
-                                }
+                            onStopped: {
+                                leftTurnButton.opacity = 0.3
                             }
-                        }
-
-                        IconButton {
-                            iconHeight: 40
-                            iconWidth: 40
-                            roundIcon: true
-                            setIcon: "qrc:/Icons/Low_Beam.svg"
-                            anchors.verticalCenter: parent.verticalCenter
-                            anchors.right: parent.right
-                            anchors.rightMargin: 20
                         }
                     }
+                    IconButton {
+                        id: rightTurnButton
+                        anchors.top: line.bottom
+                        anchors.topMargin: 10
+                        iconHeight: 40
+                        iconWidth: 40
+                        roundIcon: true
+                        setIcon: "qrc:/Icons/Right.svg"
+                        opacity: 0.3
+                        anchors.right: parent.right
+                        anchors.rightMargin: 20
+                        onClicked: canController.toggleRightTurn()
+                        // Blinking animation when right turn is on
+                        SequentialAnimation {
+                            id: rightTurnAnimation
+                            running: canController.rightTurn
+                            loops: Animation.Infinite
+                            NumberAnimation {
+                                target: rightTurnButton
+                                property: "opacity"
+                                to: 1
+                                duration: 300 // 0.25s
+                            }
+                            NumberAnimation {
+                                target: rightTurnButton
+                                property: "opacity"
+                                to: 0.3
+                                duration: 300 // 0.25s
+                            }
+                            onStopped: {
+                                rightTurnButton.opacity = 0.3
+                            }
+                        }
+                    }
+                }
+                contentItem: Item {
+                    anchors.fill: parent
 
-                    // SwipeView for main content
                     SwipeView {
                         id: view
-                        Layout.fillWidth: true
-                        Layout.fillHeight: true
+                        anchors.fill: parent
                         currentIndex: 1
                         clip: true
+                        spacing: 0
 
                         Item {
                             id: firstPage
                             Image {
                                 source: Theme.currentTheme === "dark" ? "qrc:/Image/Dark/Sidebar.png" : "qrc:/Image/Light/Sidebar.png"
-                                fillMode: Image.PreserveAspectFit
+                                fillMode: Image.PreserveAspectCrop
+                                width: parent.width
                                 anchors.centerIn: parent
-                                width: Math.min(parent.width, sourceSize.width)
-                                height: Math.min(parent.height, sourceSize.height)
                             }
                         }
 
@@ -386,7 +308,9 @@ Rectangle {
                             Image {
                                 source: Theme.currentTheme === "dark" ? "qrc:/Image/Dark/Sidebar2.png" : "qrc:/Image/Light/Sidebar2.png"
                                 fillMode: Image.PreserveAspectFit
-                                anchors.centerIn: parent
+                                anchors.horizontalCenter: parent.horizontalCenter
+                                anchors.bottom: parent.bottom
+                                anchors.bottomMargin: 235
                                 width: Math.min(parent.width, sourceSize.width)
                                 height: Math.min(parent.height, sourceSize.height)
                             }
@@ -397,7 +321,7 @@ Rectangle {
                             Image {
                                 id: glow
                                 smooth: true
-                                visible: Theme.currentTheme === "dark"
+                                visible: canController.headlight
                                 source: "qrc:/Image/headlights.png"
                                 anchors.bottom: model3.top
                                 anchors.horizontalCenter: model3.horizontalCenter
@@ -406,48 +330,47 @@ Rectangle {
 
                             Image {
                                 id: model3
-                                source: Theme.currentTheme === "dark" ? "qrc:/Image/model 3_new.svg" : "qrc:/Image/model 3-1_new.svg"
+                                source: "qrc:/Image/model 3-1_new.svg"
+                                // source: Theme.currentTheme === "dark" ? "qrc:/Image/model 3_new.svg" : "qrc:/Image/model 3-1_new.svg"
                                 fillMode: Image.PreserveAspectFit
-                                anchors.centerIn: parent
+                                anchors.horizontalCenter: parent.horizontalCenter
+                                anchors.bottom: parent.bottom
+                                anchors.bottomMargin: 235
                                 width: Math.min(parent.width, sourceSize.width)
                                 height: Math.min(parent.height, sourceSize.height)
                             }
                         }
                     }
 
-                    // Button footer (camera, power, microphone)
-                    Rectangle {
-                        Layout.fillWidth: true
-                        height: 120
-                        color: "transparent"
-
-                        RowLayout {
-                            anchors.centerIn: parent
-                            spacing: 100
-                            IconButton {
-                                setIcon: Theme.currentTheme === "dark" ? "qrc:/Icons/camera.svg" : "qrc:/Icons/dark/camera.svg"
-                            }
-                            IconButton {
-                                setIcon: Theme.currentTheme === "dark" ? "qrc:/Icons/power.svg" : "qrc:/Icons/dark/power.svg"
-                            }
-                            IconButton {
-                                setIcon: Theme.currentTheme === "dark" ? "qrc:/Icons/microphone.svg" : "qrc:/Icons/dark/microphone.svg"
-                            }
-                        }
+                    GearSelector {
+                        id: gearSelector
+                        radius: 16
+                        setColors: "#439df3"
+                        selectedIndex: canController.gear
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        anchors.bottom: parent.bottom
+                        anchors.bottomMargin: 170
+                        labelList: ["P", "R", "N", "D"]
+                        z: 3
                     }
 
-                    // Page Indicator
-                    Item {
-                        Layout.fillWidth: true
-                        height: 40
-                        z: 3
-
-                        PageIndicator {
-                            id: pageIndicator
-                            count: view.count
-                            currentIndex: view.currentIndex
-                            interactive: true
-                            anchors.centerIn: parent
+                    PageIndicator {
+                        id: pageIndicator
+                        z: 2
+                        count: view.count
+                        currentIndex: view.currentIndex
+                        interactive: true
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        anchors.top: gearSelector.bottom
+                        anchors.topMargin: 20
+                        delegate: Rectangle {
+                            width: 8
+                            height: 8
+                            radius: 4
+                            color: index === pageIndicator.currentIndex
+                                    ? (Theme.currentTheme === "dark" ? "#FFFFFF" : "#0E0E0E")
+                                    : (Theme.currentTheme === "dark" ? "#666666" : "#999999")
+                            opacity: index === pageIndicator.currentIndex ? 1.0 : 0.5
                         }
                     }
                 }
@@ -461,7 +384,7 @@ Rectangle {
 
                 ColumnLayout {
                     z: 2
-                    spacing: 20
+                    spacing: 2
                     anchors.right: parent.right
                     anchors.rightMargin: 10
                     anchors.top: parent.top
@@ -473,7 +396,8 @@ Rectangle {
                         implicitHeight: 160
                         implicitWidth: 75
                         radius: 20
-                        color: Theme.isDarkMode ? "#1c1d21" : "#FFFFFF"
+                        color: Theme.currentTheme === "dark" ? "#3f3f3f" : "#F1F1F1"
+                        visible: canController.gear !== 1
                         Rectangle {
                             z: 2
                             width: zoomInOut.width - 15
@@ -487,108 +411,129 @@ Rectangle {
                             anchors.centerIn: parent
                             spacing: 20
                             IconButton {
-                                implicitWidth: 60
-                                implicitHeight: 60
-                                setIcon: Theme.isDarkMode ? "qrc:/Icons/unknown/dark/plus.svg" : "qrc:/Icons/unknown/light/plus.svg"
-                                onClicked: mapView.zoomIn()
+                                implicitWidth: 45
+                                implicitHeight: 45
+                                setIcon: Theme.isDarkMode ? "qrc:/Icons/Light/plus.svg" : "qrc:/Icons/Dark/plus.svg"
+                                onClicked: {
+                                if (rightAreaContent.item && canController.gear !== 1) {
+                                    rightAreaContent.item.zoomIn()
+                                }
+                            }
                             }
 
                             IconButton {
-                                implicitWidth: 60
-                                implicitHeight: 60
-                                setIcon: Theme.isDarkMode ? "qrc:/Icons/unknown/dark/minus.svg" : "qrc:/Icons/unknown/light/minus.svg"
-                                onClicked: mapView.zoomOut()
+                                implicitWidth: 45
+                                implicitHeight: 45
+                                setIcon: Theme.isDarkMode ? "qrc:/Icons/Light/minus.svg" : "qrc:/Icons/Dark/minus.svg"
+                                onClicked: {
+                                if (rightAreaContent.item && canController.gear !== 1) {
+                                    rightAreaContent.item.zoomOut()
+                                }
+                            }
                             }
                         }
                     }
 
                     Rectangle {
+                        id: settingsButton
+                        anchors.top: zoomInOut.bottom
+                        anchors.topMargin: 20
                         implicitHeight: 75
                         implicitWidth: 75
                         radius: 20
-                        color: Theme.isDarkMode ? "#1c1d21" : "#FFFFFF"
+                        color: Theme.currentTheme === "dark" ? "#3f3f3f" : "#F1F1F1"
+                        visible: canController.gear !== 1
                         IconButton {
                             iconWidth: 28
                             iconHeight: 28
                             roundIcon: true
                             anchors.centerIn: parent
-                            setIcon: Theme.isDarkMode ? "qrc:/Icons/dark/gear.svg" : "qrc:/Icons/gear.svg"
+                            setIcon: Theme.isDarkMode ? "qrc:/Icons/Light/gear.svg" : "qrc:/Icons/Dark/gear.svg"
                             onClicked: createSettingsDialog()
                         }
                     }
 
                     Rectangle {
+                        id: navigationButton
+                        anchors.top: settingsButton.bottom
+                        anchors.topMargin: 20
                         implicitHeight: 75
                         implicitWidth: 75
                         radius: 20
-                        color: Theme.isDarkMode ? "#1c1d21" : "#FFFFFF"
+                        color: Theme.currentTheme === "dark" ? "#3f3f3f" : "#F1F1F1"
+                        visible: canController.gear !== 1
                         IconButton {
                             rotation: -90
                             iconWidth: 42
                             iconHeight: 42
                             roundIcon: true
                             anchors.centerIn: parent
-                            setIcon: Theme.isDarkMode ? "qrc:/Icons/navigation_light.svg" : "qrc:/Icons/navigation_dark.svg"
+                            setIcon: Theme.isDarkMode ? "qrc:/Icons/Light/navigation.svg" : "qrc:/Icons/Dark/navigation.svg"
                             onClicked: {
-                                routingService.update()
+                                if (rightAreaContent.item && canController.gear !== 1) {
+                                    rightAreaContent.item.startSimulation()
+                                }
                             }
                         }
                     }
 
                     Rectangle {
+                        id: currentLocationButton
+                        anchors.top: navigationButton.bottom
+                        anchors.topMargin: 20
                         implicitHeight: 75
                         implicitWidth: 75
                         radius: 20
-                        color: Theme.isDarkMode ? "#1c1d21" : "#FFFFFF"
+                        color: Theme.currentTheme === "dark" ? "#3f3f3f" : "#F1F1F1"
+                        visible: canController.gear !== 1
                         IconButton {
                             iconWidth: 24
                             iconHeight: 24
                             rotation: -90
                             anchors.centerIn: parent
-                            setIcon: Theme.isDarkMode ? "qrc:/Icons/current_location_dark.svg" : "qrc:/Icons/current_location_light.svg"
+                            setIcon: Theme.isDarkMode ? "qrc:/Icons/Light/current_location.svg" : "qrc:/Icons/Dark/current_location.svg"
                             onClicked: {
-                                navigation.active = !navigation.active
+                                if (rightAreaContent.item && canController.gear !== 1) {
+                                    rightAreaContent.item.showFullRoute()
+                                }
                             }
                         }
                     }
                 }
 
-                Map {
-                    id: mapView
-                    z: 1
+                Loader {
+                    id: rightAreaContent
+                    anchors.fill: parent
+                    sourceComponent: canController.gear === 1 ? reverseImageComponent : mapComponent
                     clip: true
-                    width: parent.width - 5
-                    height: parent.height - 5
-                    anchors.centerIn: parent
+                }
 
-                    plugin: Plugin {
-                        name: "osm"
+                Component {
+                    id: mapComponent
+                    NavigationMap {
+                        id: mapView
+                        z: 1
+                        anchors.fill: parent
                     }
+                }
 
-                    center: QtPositioning.coordinate(28.7041, 77.1025)
-                    zoomLevel: 14
+                Component {
+                    id: reverseImageComponent
+                    Rectangle {
+                        anchors.fill: parent
+                        anchors.bottomMargin: Theme.currentTheme === "dark" ? 120 : 0
+                        color: Theme.currentTheme === "dark" ? "#121212" : "#F1F1F1"
 
-                    MapItemView {
-                        model: routeModel
-                        delegate: MapRoute {
-                            route: routeData
-                            line.color: "#95c1e6"
-                            line.width: 4
-                            smooth: true
-                            opacity: 0.8
+                        Image {
+                            id: reverseImage
+                            source: Theme.currentTheme === "dark" ? "qrc:/Image/Guide_line.png" : "qrc:/Image/rvc_example.jpg"
+                            fillMode: Image.PreserveAspectFit
+                            height: parent.height
+                            width: sourceSize.width * (parent.height / sourceSize.height)
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            anchors.verticalCenter: parent.verticalCenter
                         }
                     }
-                }
-
-                RouteQuery {
-                    id: routeQuery
-                }
-
-                RouteModel {
-                    id: routeModel
-                    plugin: mapView.plugin
-                    query: routeQuery
-                    autoUpdate: false
                 }
             }
         }
@@ -608,9 +553,5 @@ Rectangle {
         anchors.bottom: parent.bottom
         z: 2 // Same as header, above content
         onOpenLaunchpad: launchPad.open()
-
-        root: homeScreen.root
-        leftArea: homeScreen.leftArea
-        rightArea: homeScreen.rightArea
     }
 }

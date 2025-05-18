@@ -49,6 +49,8 @@ Rectangle{
     }
 
     Component.onCompleted: {
+        console.log("Pushing in")
+
         mainApplicationStackView.push(pageMap)
         pageMap.startAnimation()
     }
