@@ -92,5 +92,24 @@
         <file>Icons/icons8-car.gif</file>
         <file>Icons/icons8-destination.gif</file>
         <file>Components/DynamicMap.qml</file>
+        <file>Components/SettingDialog.qml</file>
+        <file>Components/Settings/Autopilote.qml</file>
+        <file>Components/Settings/Display.qml</file>
+        <file>Components/Settings/Driving.qml</file>
+        <file>Components/Settings/Lights.qml</file>
+        <file>Components/Settings/Lock.qml</file>
+        <file>Components/Settings/MapThemes.qml</file>
+        <file>Components/Settings/QuickControl.qml</file>
+        <file>Components/Settings/SafetyAndSecurity.qml</file>
+        <file>Components/Settings/Service.qml</file>
+        <file>Components/SideListDelegate.qml</file>
+        <file>Components/SideListModel.qml</file>
+        <file>Components/Settings/LabelSelector.qml</file>
+        <file>Components/Settings/TButton.qml</file>
+        <file>Components/Settings/TSlider.qml</file>
+        <file>Components/Settings/TSwitch.qml</file>
+        <file>Components/Gauge.qml</file>
+        <file>Icons/needle.svg</file>
+        <file>Icons/tickmark.svg</file>
     </qresource>
 </RCC>

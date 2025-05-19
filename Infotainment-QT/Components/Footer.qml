@@ -13,32 +13,41 @@ Rectangle {
     property Item root: parent  // Default to parent, can be overridden
     property Item leftArea
     property Item rightArea
+    property var settingDialog: null
 
     signal openLaunchpad()
 
     // Dialog creation functions defined directly in the Footer
-    function createSettingsDialog() {
-        var component = Qt.createComponent("qrc:/Component/SettingsDialog.qml");
-        if (component.status != Component.Ready) {
-            if (component.status == Component.Error)
-                console.debug("Error:" + component.errorString());
-            return;
+    function createSettingDialog() {
+        // If dialog exists and is visible, bring to focus
+        if (settingDialog !== null && settingDialog.visible) {
+            settingDialog.requestActivate()
+            console.log("Settings dialog already open, focusing")
+            return
         }
-        var win = component.createObject(root);
-        if (win !== null) {
-            win.x = leftArea.width + 20;
-            win.y = rightArea.height - win.height + 10;
-            win.applyTheme.connect(function(mapInfo) {
-                root.applyTheme(mapInfo);
-            });
-            win.show();
+
+        var component = Qt.createComponent("qrc:/Components/SettingDialog.qml")
+        if (component.status !== Component.Ready) {
+            if (component.status === Component.Error)
+                console.debug("Error loading SettingDialog.qml:", component.errorString())
+            return
+        }
+
+        settingDialog = component.createObject(root)
+        if (settingDialog !== null) {
+            settingDialog.x = parent.width * 0.3 + 20
+            settingDialog.y = parent.height - settingDialog.height + 10
+            settingDialog.show()
+            console.log("Settings dialog created and shown")
+        } else {
+            console.debug("Failed to create SettingDialog.qml")
         }
     }
 
     function createMusicDialog() {
         var component = Qt.createComponent("qrc:/Music/qml/Music.qml");
-        if (component.status != Component.Ready) {
-            if (component.status == Component.Error)
+        if (component.status !== Component.Ready) {
+            if (component.status === Component.Error)
                 console.debug("Error:" + component.errorString());
             return;
         }
@@ -69,7 +78,7 @@ Rectangle {
         // Settings button
         IconButton {
             setIcon: "qrc:/Icons/model3-icon.svg"
-            onClicked: footer.createSettingsDialog()
+            onClicked: footer.createSettingDialog()
         }
 
         // Defrost button

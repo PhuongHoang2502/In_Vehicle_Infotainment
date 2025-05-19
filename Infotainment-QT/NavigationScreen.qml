@@ -449,7 +449,7 @@ Rectangle {
                             roundIcon: true
                             anchors.centerIn: parent
                             setIcon: Theme.isDarkMode ? "qrc:/Icons/Light/gear.svg" : "qrc:/Icons/Dark/gear.svg"
-                            onClicked: createSettingsDialog()
+                            onClicked: footer.createSettingDialog()
                         }
                     }
 

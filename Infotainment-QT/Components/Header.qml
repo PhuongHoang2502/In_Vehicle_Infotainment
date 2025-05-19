@@ -28,36 +28,83 @@ Rectangle {
         }
     }
 
-    // Left section with time and date
-    ColumnLayout {
-        id: timeDisplay
-        spacing: 2
+    // Main layout to arrange time/date and temperature/humidity horizontally
+    RowLayout {
+        id: mainLayout
+        width: parent.width * 0.3
+        spacing: 10 // Space between time/date and temperature/humidity
         anchors {
             left: parent.left
             leftMargin: 20
             verticalCenter: parent.verticalCenter
         }
 
-        Label {
-            id: currentTime
-            text: Qt.formatDateTime(new Date(), header.timeFormat)
-            font {
-                pixelSize: 22
-                family: header.defaultFontFamily
-                bold: Font.Normal
+        // Time and date section
+        ColumnLayout {
+            id: timeDisplay
+            spacing: 2
+
+            Label {
+                id: currentTime
+                text: Qt.formatDateTime(new Date(), header.timeFormat)
+                font {
+                    pixelSize: 22
+                    family: header.defaultFontFamily
+                    bold: Font.Normal
+                }
+                color: Theme.colors.text
             }
-            color: Theme.colors.text
+
+            Label {
+                id: currentDate
+                text: Qt.formatDateTime(new Date(), header.dateFormat)
+                font {
+                    pixelSize: 14
+                    family: header.defaultFontFamily
+                    bold: Font.Normal
+                }
+                color: Theme.colors.text
+            }
         }
 
-        Label {
-            id: currentDate
-            text: Qt.formatDateTime(new Date(), header.dateFormat)
-            font {
-                pixelSize: 14
-                family: header.defaultFontFamily
-                bold: Font.Normal
+        // Temperature and humidity section
+        RowLayout {
+            id: envDisplay
+            spacing: 10
+            anchors.top: timeDisplay.top
+            anchors.right: parent.right
+            anchors.rightMargin: 40
+            Label {
+                id: temperature
+                text: canController.temperature.toFixed(1) + "°C"
+                font {
+                    pixelSize: 22
+                    family: header.defaultFontFamily
+                    bold: Font.Normal
+                }
+                color: Theme.colors.text
             }
-            color: Theme.colors.text
+
+            Label {
+                text: "|"
+                font {
+                    pixelSize: 22
+                    family: header.defaultFontFamily
+                    bold: Font.Normal
+                }
+                color: Theme.colors.text
+            }
+
+            Label {
+                id: humidity
+                text: canController.humidity + "%"
+                font {
+                    pixelSize: 22
+                    family: header.defaultFontFamily
+                    bold: Font.Normal
+                }
+                color: Theme.colors.text
+            }
         }
     }
 }

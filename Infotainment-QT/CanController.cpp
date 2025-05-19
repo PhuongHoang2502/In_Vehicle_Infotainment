@@ -7,8 +7,8 @@ CanController::CanController(QObject *parent)
       m_gear(0),
       m_speed(0),
       m_light(0),
-      m_temperature(0.0),
-      m_humidity(0),
+      m_temperature(25),
+      m_humidity(80),
       m_distance(0),
       m_buzzerMode(0),
       m_leftTurn(false),
@@ -170,9 +170,11 @@ void CanController::receiveCanFrame()
             break;
 
         case 0x106: // Buzzer state
-            if (payload.size() >= 1) {
+            if (payload.size() >= 1)
+            {
                 int newBuzzerMode = payload[0] & 0x03;
-                if (newBuzzerMode != m_buzzerMode) {
+                if (newBuzzerMode != m_buzzerMode)
+                {
                     m_buzzerMode = newBuzzerMode;
                     emit buzzerModeChanged();
                 }
@@ -266,23 +268,35 @@ void CanController::updateHeadlightInAutoMode()
     }
 }
 
-void CanController::updateBuzzerMode() {
+void CanController::updateBuzzerMode()
+{
     int newBuzzerMode;
-    if (m_gear != 1) { // Not Reverse
+    if (m_gear != 1)
+    {                      // Not Reverse
         newBuzzerMode = 0; // Off
-    } else { // Reverse
-        if (m_distance > 50) {
+    }
+    else
+    { // Reverse
+        if (m_distance > 50)
+        {
             newBuzzerMode = 0; // Off
-        } else if (m_distance > 30) {
+        }
+        else if (m_distance > 30)
+        {
             newBuzzerMode = 1; // Low
-        } else if (m_distance > 10) {
+        }
+        else if (m_distance > 10)
+        {
             newBuzzerMode = 2; // Medium
-        } else {
+        }
+        else
+        {
             newBuzzerMode = 3; // High
         }
     }
 
-    if (newBuzzerMode != m_buzzerMode) {
+    if (newBuzzerMode != m_buzzerMode)
+    {
         m_buzzerMode = newBuzzerMode;
         QByteArray data(1, m_buzzerMode & 0x03);
         sendCanMessage(0x200, data);
