@@ -130,10 +130,11 @@ Rectangle {
 
         Gauge {
             id:leftGauge
+            speedColor: currentTheme === "dark" ? "#e60101" : "#0114e6"
             anchors{
                 verticalCenter: parent.verticalCenter
                 left: parent.left
-                leftMargin: parent.width / 7
+                leftMargin: parent.width / 11
             }
             property bool accelerating
             width: 400
@@ -142,10 +143,15 @@ Rectangle {
             maximumValue: 250
             Component.onCompleted: forceActiveFocus()
             Behavior on value { NumberAnimation { duration: 1000 }}
+
             Keys.onSpacePressed: accelerating = true
+            Keys.onReturnPressed: rightGauge.accelerating = true
             Keys.onReleased: {
                 if (event.key === Qt.Key_Space) {
                     accelerating = false;
+                    event.accepted = true;
+                }else if(event.key === Qt.Key_Return){
+                    rightGauge.accelerating = false;
                     event.accepted = true;
                 }
             }
@@ -153,41 +159,35 @@ Rectangle {
 
         Gauge {
             id:rightGauge
+            speedColor: currentTheme === "dark" ? "#01a1e6" : "#e60101" //"#01E6DC" : "#01E6DC"
+            speedUnit: "RPM"
             anchors{
                 verticalCenter: parent.verticalCenter
                 right: parent.right
-                rightMargin: parent.width / 7
+                rightMargin: parent.width /11
             }
             property bool accelerating
             width: 400
             height: 400
             value: accelerating ? maximumValue : 0
-            maximumValue: 25
-            Component.onCompleted: forceActiveFocus()
+            maximumValue: 250
             Behavior on value { NumberAnimation { duration: 1000 }}
-            Keys.onSpacePressed: accelerating = true
-            Keys.onReleased: {
-                if (event.key === Qt.Key_Space) {
-                    accelerating = false;
-                    event.accepted = true;
-                }
-            }
         }
     }
 
-    LaunchPad {
-        id: launchPad
-        x: (parent.width - width) / 2
-        y: parent.height - footer.height - height
-        z: 3 // Above content and footer
-    }
+    // LaunchPad {
+    //     id: launchPad
+    //     x: (parent.width - width) / 2
+    //     y: parent.height - footer.height - height
+    //     z: 3 // Above content and footer
+    // }
 
-    Footer {
-        id: footer
-        width: parent.width
-        height: 120
-        anchors.bottom: parent.bottom
-        z: 2 // Same as header, above content
-        onOpenLaunchpad: launchPad.open()
-    }
+    // Footer {
+    //     id: footer
+    //     width: parent.width
+    //     height: 120
+    //     anchors.bottom: parent.bottom
+    //     z: 2 // Same as header, above content
+    //     onOpenLaunchpad: launchPad.open()
+    // }
 }

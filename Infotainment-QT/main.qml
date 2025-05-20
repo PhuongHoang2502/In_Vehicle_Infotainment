@@ -104,6 +104,6 @@ ApplicationWindow {
     }
     //quick open
     Component.onCompleted: {
-        stackView.push(navigationScreen)
+        stackView.push(clusterScreen)
     }
 }

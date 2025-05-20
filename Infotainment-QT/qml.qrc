@@ -134,5 +134,10 @@
         <file>Icons/Light/Parking Brake Icon.svg</file>
         <file>Icons/Light/steering wheel-small.svg</file>
         <file>Icons/Light/wiper.svg</file>
+        <file>Icons/Ellipse 1.svg</file>
+        <file>Icons/Ellipse 6.svg</file>
+        <file>Icons/maxLimit.svg</file>
+        <file>Icons/Rectangle 4.svg</file>
+        <file>Icons/Subtract.svg</file>
     </qresource>
 </RCC>
