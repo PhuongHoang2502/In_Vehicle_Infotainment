@@ -2,7 +2,6 @@ import QtQuick 2.15
 import QtQuick.Controls 2.5
 import QtQuick.Layouts 1.3
 import "../"
-import "../../"
 import App.Theme 1.0
 Item {
 
@@ -24,7 +23,7 @@ Item {
                 spacing: 20
                 IconButton{
                     Layout.alignment: Qt.AlignHCenter
-                    setIcon: !Theme.isDarkMode ? "qrc:/Icons/wiper_dark.svg" : "qrc:/Icons/wiper.svg"
+                    setIcon: Theme.isDarkMode ? "qrc:/Icons/Light/wiper.svg" : "qrc:/Icons/Dark/wiper.svg"
                 }
 
                 Label {
@@ -32,7 +31,7 @@ Item {
                     text: "Wiper Service Mode"
                     font.pixelSize: 20
                     font.family: "Montserrat"
-                    color: Theme.fontColor
+                    color: Theme.colors.text
                 }
             }
         }
@@ -48,7 +47,7 @@ Item {
                 spacing: 5
                 IconButton{
                     Layout.alignment: Qt.AlignHCenter
-                    setIcon:!Theme.isDarkMode ? "qrc:/Icons/headlights-small_dark.svg" : "qrc:/Icons/headlights-small.svg"
+                    setIcon:Theme.isDarkMode ? "qrc:/Icons/Light/headlights-small.svg" : "qrc:/Icons/Dark/headlights-small.svg"
                 }
 
                 Label {
@@ -56,7 +55,7 @@ Item {
                     text: "Adjust Headlights"
                     font.pixelSize: 20
                     font.family: "Montserrat"
-                    color: Theme.fontColor
+                    color: Theme.colors.text
                 }
             }
         }
@@ -72,7 +71,7 @@ Item {
                 spacing: 5
                 IconButton{
                     Layout.alignment: Qt.AlignHCenter
-                    setIcon: !Theme.isDarkMode ? "qrc:/Icons/headlights-small_dark.svg" : "qrc:/Icons/headlights-small.svg"
+                    setIcon: Theme.isDarkMode ? "qrc:/Icons/Light/headlights-small.svg" : "qrc:/Icons/Dark/headlights-small.svg"
                 }
 
                 Label {
@@ -80,7 +79,7 @@ Item {
                     text: "Headlight Reset"
                     font.pixelSize: 20
                     font.family: "Montserrat"
-                    color: Theme.fontColor
+                    color: Theme.colors.text
                 }
             }
         }

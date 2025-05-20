@@ -9,7 +9,7 @@ QtObject {
     enum Mode { Auto, Light, Dark }
     property int currentMode: Theme.Mode.Auto
     property string currentTheme: "dark"
-
+    property bool isDarkMode: currentTheme === "dark"
     // Light sensor value (0-1 where 1 is brightest)
     property real lightSensorValue: canController.light
     property real lightSensorThreshold: 50 // Above this = light mode
@@ -26,7 +26,7 @@ QtObject {
         "background": "#FFFFFF",
         "surface": "#F5F5F5",
         "primary": "#6200EE",
-        "text": "#000000"
+        "text": "#0E0E0E"
     }
 
     property var colors: currentTheme === "dark" ? dark : light

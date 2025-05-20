@@ -20,7 +20,7 @@ Item {
             font.family: "Montserrat"
             verticalAlignment: Image.AlignVCenter
             Layout.alignment: Qt.AlignVCenter
-            color: Theme.fontColor
+            color: Theme.colors.text
         }
 
         ColumnLayout{
@@ -32,7 +32,7 @@ Item {
                 font.family: "Montserrat"
                 verticalAlignment: Image.AlignVCenter
                 Layout.alignment: Qt.AlignVCenter
-                color: Theme.fontColor
+                color: Theme.colors.text
             }
 
             LabelSelector{
@@ -53,7 +53,7 @@ Item {
             font.family: "Montserrat"
             verticalAlignment: Image.AlignVCenter
             Layout.alignment: Qt.AlignVCenter
-            color: Theme.fontColor
+            color: Theme.colors.text
         }
 
         ColumnLayout{
@@ -65,7 +65,7 @@ Item {
                 font.family: "Montserrat"
                 verticalAlignment: Image.AlignVCenter
                 Layout.alignment: Qt.AlignVCenter
-                color: Theme.fontColor
+                color: Theme.colors.text
             }
 
             LabelSelector{

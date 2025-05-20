@@ -26,7 +26,7 @@ Button {
         Label {
             text: control.text
             font:control.font
-            color: Theme.fontColor
+            color: Theme.colors.text
             Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
         }
     }
@@ -84,7 +84,7 @@ Button {
             target: indicator
             property: 'width'
             from: 0
-            to: control.width * 1.5
+            to: control.width
             duration: 200
         }
         NumberAnimation {

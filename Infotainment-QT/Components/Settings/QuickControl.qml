@@ -2,7 +2,6 @@ import QtQuick 2.15
 import QtQuick.Controls 2.5
 import QtQuick.Layouts 1.3
 import "../"
-import "../../"
 import App.Theme 1.0
 Item {
 
@@ -19,7 +18,7 @@ Item {
             RowLayout{
                 Layout.alignment: Qt.AlignHCenter
                 IconButton{
-                    setIcon: !Theme.isDarkMode ? "qrc:/Icons/display_dark.svg" : "qrc:/Icons/display.svg"
+                    setIcon: Theme.isDarkMode ? "qrc:/Icons/Light/display.svg" : "qrc:/Icons/Dark/display.svg"
                 }
 
                 Label {
@@ -28,7 +27,7 @@ Item {
                     Layout.fillWidth: true
                     font.pixelSize: 20
                     font.family: "Montserrat"
-                    color: Theme.fontColor
+                    color: Theme.colors.text
                 }
             }
 
@@ -48,7 +47,7 @@ Item {
             RowLayout{
                 Layout.alignment: Qt.AlignHCenter
                 IconButton{
-                    setIcon: !Theme.isDarkMode ? "qrc:/Icons/headlights-small_dark.svg" : "qrc:/Icons/headlights-small.svg"
+                    setIcon: Theme.isDarkMode ? "qrc:/Icons/Light/headlights-small.svg" : "qrc:/Icons/Dark/headlights-small.svg"
                 }
 
                 Label {
@@ -57,7 +56,7 @@ Item {
                     Layout.fillWidth: true
                     font.pixelSize: 20
                     font.family: "Montserrat"
-                    color: Theme.fontColor
+                    color: Theme.colors.text
                 }
             }
 
@@ -76,7 +75,7 @@ Item {
             RowLayout{
                 Layout.alignment: Qt.AlignHCenter
                 IconButton{
-                    setIcon: !Theme.isDarkMode ? "qrc:/Icons/adjustments_dark.svg" : "qrc:/Icons/adjustments.svg"
+                    setIcon: Theme.isDarkMode ? "qrc:/Icons/Light/adjustments.svg" : "qrc:/Icons/Dark/adjustments.svg"
                 }
 
                 Label {
@@ -85,7 +84,7 @@ Item {
                     Layout.fillWidth: true
                     font.pixelSize: 20
                     font.family: "Montserrat"
-                    color: Theme.fontColor
+                    color: Theme.colors.text
                 }
             }
 
@@ -102,12 +101,12 @@ Item {
                         RowLayout{
                             Layout.alignment: Qt.AlignHCenter
                             IconButton{
-                                setIcon: !Theme.isDarkMode ? "qrc:/Icons/mirror_dark.svg" : "qrc:/Icons/mirror.svg"
+                                setIcon: Theme.isDarkMode ? "qrc:/Icons/Light/mirror.svg" : "qrc:/Icons/Dark/mirror.svg"
                             }
 
                             IconButton{
                                 isMirror: true
-                                setIcon: !Theme.isDarkMode ? "qrc:/Icons/mirror_dark.svg" : "qrc:/Icons/mirror.svg"
+                                setIcon: Theme.isDarkMode ? "qrc:/Icons/Light/mirror.svg" : "qrc:/Icons/Dark/mirror.svg"
                             }
                         }
 
@@ -116,7 +115,7 @@ Item {
                             text: "Mirrors"
                             font.pixelSize: 20
                             font.family: "Montserrat"
-                            color: Theme.fontColor
+                            color: Theme.colors.text
                         }
                     }
                 }
@@ -132,7 +131,7 @@ Item {
                         spacing: 10
                         IconButton{
                             Layout.alignment: Qt.AlignHCenter
-                            setIcon: Theme.isDarkMode ? "qrc:/Icons/Settings/steering wheel-small.svg" : "qrc:/Icons/Settings/light/steering wheel-small.svg"
+                            setIcon: Theme.isDarkMode ? "qrc:/Icons/Light/steering wheel-small.svg" : "qrc:/Icons/Dark/steering wheel-small.svg"
                         }
 
                         Label {
@@ -140,7 +139,7 @@ Item {
                             text: "Steering Wheel"
                             font.pixelSize: 20
                             font.family: "Montserrat"
-                            color: Theme.fontColor
+                            color: Theme.colors.text
                         }
                     }
                 }

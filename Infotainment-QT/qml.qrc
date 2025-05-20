@@ -111,5 +111,28 @@
         <file>Components/Gauge.qml</file>
         <file>Icons/needle.svg</file>
         <file>Icons/tickmark.svg</file>
+        <file>Icons/display.svg</file>
+        <file>Icons/gear.svg</file>
+        <file>Icons/lights.svg</file>
+        <file>Icons/lock.svg</file>
+        <file>Icons/model3-icon-small.svg</file>
+        <file>Icons/quick controls.svg</file>
+        <file>Icons/safety and security.svg</file>
+        <file>Icons/service.svg</file>
+        <file>Icons/steering wheel-small.svg</file>
+        <file>Icons/Dark/adjustments.svg</file>
+        <file>Icons/Dark/display.svg</file>
+        <file>Icons/Dark/headlights-small.svg</file>
+        <file>Icons/Dark/mirror.svg</file>
+        <file>Icons/Dark/Parking Brake Icon.svg</file>
+        <file>Icons/Dark/steering wheel-small.svg</file>
+        <file>Icons/Dark/wiper.svg</file>
+        <file>Icons/Light/adjustments.svg</file>
+        <file>Icons/Light/display.svg</file>
+        <file>Icons/Light/headlights-small.svg</file>
+        <file>Icons/Light/mirror.svg</file>
+        <file>Icons/Light/Parking Brake Icon.svg</file>
+        <file>Icons/Light/steering wheel-small.svg</file>
+        <file>Icons/Light/wiper.svg</file>
     </qresource>
 </RCC>

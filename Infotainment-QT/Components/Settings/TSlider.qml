@@ -50,7 +50,7 @@ Slider {
             anchors.centerIn: parent
             font.pointSize: 20
             font.family: "Montserrat"
-            color: Theme.fontColor
+            color: Theme.colors.text
         }
 
         layer.enabled: control.pressed

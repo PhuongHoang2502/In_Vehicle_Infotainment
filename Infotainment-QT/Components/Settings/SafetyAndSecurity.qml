@@ -2,7 +2,6 @@ import QtQuick 2.15
 import QtQuick.Controls 2.5
 import QtQuick.Layouts 1.3
 import "../"
-import "../../"
 import App.Theme 1.0
 Item {
 
@@ -20,7 +19,7 @@ Item {
                 Layout.fillWidth: true
                 font.pixelSize: 20
                 font.family: "Montserrat"
-                color: Theme.fontColor
+                color: Theme.colors.text
             }
 
             RowLayout{
@@ -39,7 +38,7 @@ Item {
                             spacing: 20
                             IconButton{
                                 Layout.alignment: Qt.AlignHCenter
-                                setIcon: Theme.isDarkMode ? "qrc:/Icons/Parking Brake Icon_dark.svg" : "qrc:/Icons/Parking Brake Icon.svg"
+                                setIcon: Theme.isDarkMode ? "qrc:/Icons/Light/Parking Brake Icon.svg" : "qrc:/Icons/Dark/Parking Brake Icon.svg"
                             }
 
                             Label {
@@ -47,7 +46,7 @@ Item {
                                 text: "Parking Brake"
                                 font.pixelSize: 20
                                 font.family: "Montserrat"
-                                color: Theme.fontColor
+                                color: Theme.colors.text
                             }
                         }
 
@@ -56,7 +55,7 @@ Item {
                             text: "BRAKE IS OFF"
                             font.pixelSize: 20
                             font.family: "Montserrat"
-                            color: Theme.fontColor
+                            color: Theme.colors.text
                         }
                     }
                 }
@@ -66,7 +65,7 @@ Item {
                     text: "Selecting park on the steering column will aslo set \nthe parking brake"
                     font.pixelSize: 20
                     font.family: "Montserrat"
-                    color: Theme.fontColor
+                    color: Theme.colors.text
                 }
             }
         }
@@ -79,7 +78,7 @@ Item {
                 text: "Vehicle Power"
                 font.pixelSize: 20
                 font.family: "Montserrat"
-                color: Theme.fontColor
+                color: Theme.colors.text
             }
 
             TButton{
@@ -91,7 +90,7 @@ Item {
                 font.pixelSize: 16
                 opacity: 0.8
                 font.family: "Montserrat"
-                color: Theme.fontColor
+                color: Theme.colors.text
                 wrapMode: Label.WrapAtWordBoundaryOrAnywhere
             }
         }

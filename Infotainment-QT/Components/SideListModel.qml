@@ -7,49 +7,49 @@ import QtQuick.Controls 2.5
 //https://stackoverflow.com/questions/30266881/what-is-the-right-way-to-use-qquickimageprovider
 ListModel {
     ListElement {
-        iconName:"qrc:/Icons/Settings/quick controls.svg"
+        iconName:"qrc:/Icons/quick controls.svg"
         iconColor:"transparent"
         name: "Quick Controls"
     }
     ListElement {
-        iconName:"qrc:/Icons/Settings/lights.svg"
+        iconName:"qrc:/Icons/lights.svg"
         iconColor:"transparent"
         name: "Lights"
     }
     ListElement {
-        iconName:"qrc:/Icons/Settings/lock.svg"
+        iconName:"qrc:/Icons/lock.svg"
         iconColor:"transparent"
         name: "Locks"
     }
     ListElement {
-        iconName:"qrc:/Icons/Settings/display.svg"
+        iconName:"qrc:/Icons/display.svg"
         iconColor:"transparent"
         name: "Display"
     }
     ListElement {
-        iconName:"qrc:/Icons/Settings/model3-icon-small.svg"
+        iconName:"qrc:/Icons/model3-icon-small.svg"
         iconColor:"transparent"
         name: "Driving"
     }
     ListElement {
-        iconName:"qrc:/Icons/Settings/steering wheel-small.svg"
+        iconName:"qrc:/Icons/steering wheel-small.svg"
         iconColor:"transparent"
         name: "Autopilot"
     }
     ListElement {
-        iconName:"qrc:/Icons/Settings/safety and security.svg"
+        iconName:"qrc:/Icons/safety and security.svg"
         iconColor:"transparent"
         name: "Safety & Security"
     }
 
     ListElement {
-        iconName:"qrc:/Icons/Settings/service.svg"
+        iconName:"qrc:/Icons/service.svg"
         iconColor:"transparent"
         name: "Service"
     }
 
     ListElement {
-        iconName: "qrc:/Icons/Settings/gear.svg"
+        iconName: "qrc:/Icons/gear.svg"
         iconColor:"transparent"
         name: "Map Settings"
     }

@@ -21,7 +21,7 @@ Item {
                 font.family: "Montserrat"
                 verticalAlignment: Image.AlignVCenter
                 Layout.alignment: Qt.AlignVCenter
-                color: Theme.fontColor
+                color: Theme.colors.text
             }
 
             LabelSelector{
@@ -34,7 +34,7 @@ Item {
                 font.family: "Montserrat"
                 verticalAlignment: Image.AlignVCenter
                 Layout.alignment: Qt.AlignVCenter
-                color: Theme.fontColor
+                color: Theme.colors.text
             }
 
             LabelSelector{
@@ -47,7 +47,7 @@ Item {
                 font.family: "Montserrat"
                 verticalAlignment: Image.AlignVCenter
                 Layout.alignment: Qt.AlignVCenter
-                color: Theme.fontColor
+                color: Theme.colors.text
             }
         }
 
@@ -60,7 +60,7 @@ Item {
                 font.family: "Montserrat"
                 verticalAlignment: Image.AlignVCenter
                 Layout.alignment: Qt.AlignVCenter
-                color: Theme.fontColor
+                color: Theme.colors.text
             }
 
             TButton{
@@ -76,7 +76,7 @@ Item {
                 font.family: "Montserrat"
                 verticalAlignment: Image.AlignVCenter
                 Layout.alignment: Qt.AlignVCenter
-                color: Theme.fontColor
+                color: Theme.colors.text
             }
             TButton{
                implicitWidth: 220
@@ -91,7 +91,7 @@ Item {
                 font.family: "Montserrat"
                 verticalAlignment: Image.AlignVCenter
                 Layout.alignment: Qt.AlignVCenter
-                color: Theme.fontColor
+                color: Theme.colors.text
             }
         }
 

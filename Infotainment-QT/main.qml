@@ -12,7 +12,7 @@ ApplicationWindow {
     StackView {
         id: stackView
         anchors.fill: parent
-        visible: false // Initially hide the StackView
+        visible: true // Initially hide the StackView
         initialItem: homeScreen
 
         // Use fade transitions instead of slide
@@ -66,17 +66,17 @@ ApplicationWindow {
         }
     }
 
-        VideoSplash {
-            id: splash
-            anchors.fill: parent
-            z: 1 // Ensure the splash is on top
-            onFinished: {
-                splash.visible = false // Hide the splash when done
-                stackView.visible = true // Show the main content
-                // Or transition to your main content if you prefer a smoother visual
-                // stackView.push(homeScreen)
-            }
-        }
+//        VideoSplash {
+//            id: splash
+//            anchors.fill: parent
+//            z: 1 // Ensure the splash is on top
+//            onFinished: {
+//                splash.visible = false // Hide the splash when done
+//                stackView.visible = true // Show the main content
+//                // Or transition to your main content if you prefer a smoother visual
+//                // stackView.push(homeScreen)
+//            }
+//        }
 
     // Load screens as components
     Component {
@@ -103,7 +103,7 @@ ApplicationWindow {
         }
     }
     //quick open
-//    Component.onCompleted: {
-//        stackView.push(clusterScreen)
-//    }
+    Component.onCompleted: {
+        stackView.push(navigationScreen)
+    }
 }

@@ -58,7 +58,7 @@ Pane{
                         text: modelData
                         font.pixelSize: 20
                         font.family: "Montserrat"
-                        color: Theme.fontColor
+                        color: Theme.colors.text
                         anchors.centerIn: parent
                     }
                 }

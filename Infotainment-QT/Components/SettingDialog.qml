@@ -109,7 +109,7 @@ ApplicationWindow {
 
         Rectangle {
             id: mainRect
-            color: Theme.colors.background
+            color: Theme.currentTheme === "dark" ? "#161616" : "#FFFFFF"
             SplitView.preferredWidth: 400
             SplitView.maximumWidth: 400
             SplitView.minimumWidth: 400
@@ -147,7 +147,7 @@ ApplicationWindow {
         Rectangle {
             id: collapsibleRect
             SplitView.fillWidth: true
-            color: Theme.colors.surface
+            color: Theme.currentTheme === "dark" ? "#0E0E0E" : "#F0F0F0"
             clip: true
             Loader {
                 id: mainLoader

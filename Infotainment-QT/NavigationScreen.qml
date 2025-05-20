@@ -393,7 +393,7 @@ Rectangle {
 
                     Rectangle {
                         id: zoomInOut
-                        implicitHeight: 160
+                        implicitHeight: 150
                         implicitWidth: 75
                         radius: 20
                         color: Theme.currentTheme === "dark" ? "#3f3f3f" : "#F1F1F1"

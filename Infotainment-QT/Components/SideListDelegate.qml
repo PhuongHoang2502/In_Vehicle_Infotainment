@@ -52,7 +52,7 @@ ItemDelegate {
             font.family: "Montserrat"
             verticalAlignment: Image.AlignVCenter
             Layout.alignment: Qt.AlignVCenter
-            color: Theme.fontColor
+            color: Theme.colors.text
         }
     }
 }

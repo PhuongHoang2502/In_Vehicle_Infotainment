@@ -68,7 +68,7 @@ Item {
                         font.family: "Montserrat"
                         verticalAlignment: Image.AlignVCenter
                         Layout.alignment: Qt.AlignVCenter
-                        color: Theme.fontColor
+                        color: Theme.colors.text
                     }
 
                     Label {
@@ -78,7 +78,7 @@ Item {
                         font.family: "Montserrat"
                         verticalAlignment: Image.AlignVCenter
                         Layout.alignment: Qt.AlignVCenter
-                        color: Theme.fontColor
+                        color: Theme.colors.text
                     }
                 }
             }

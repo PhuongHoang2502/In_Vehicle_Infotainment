@@ -2,7 +2,6 @@ import QtQuick 2.15
 import QtQuick.Controls 2.5
 import QtQuick.Layouts 1.3
 import "../"
-import "../../"
 import App.Theme 1.0
 Item {
     ColumnLayout{
@@ -22,14 +21,14 @@ Item {
                 font.family: "Montserrat"
                 verticalAlignment: Image.AlignVCenter
                 Layout.alignment: Qt.AlignVCenter
-                color: Theme.fontColor
+                color: Theme.colors.text
             }
 
             RowLayout{
                 spacing: 10
                 IconButton{
                     id:minus
-                    setIcon:Theme.isDarkMode ? "qrc:/Icons/unknown/dark/minus.svg" : "qrc:/Icons/unknown/light/minus.svg"
+                    setIcon:Theme.isDarkMode ? "qrc:/Icons/Light/minus.svg" : "qrc:/Icons/Dark/minus.svg"
                     Layout.alignment: Qt.AlignVCenter
                     onClicked: {
                         var number = parseInt(cruise_Control.text)
@@ -53,14 +52,14 @@ Item {
                         font.pixelSize: 24
                         font.family: "Montserrat"
                         font.bold: Font.DemiBold
-                        color: Theme.fontColor
+                        color: Theme.colors.text
                         anchors.centerIn: parent
                     }
                 }
 
                 IconButton{
                     id:plus
-                    setIcon: Theme.isDarkMode ? "qrc:/Icons/unknown/dark/plus.svg" : "qrc:/Icons/unknown/light/plus.svg"
+                    setIcon: Theme.isDarkMode ? "qrc:/Icons/Light/plus.svg" : "qrc:/Icons/Dark/plus.svg"
                     Layout.alignment: Qt.AlignVCenter
                     onClicked: {
                         var number = parseInt(cruise_Control.text)
@@ -78,13 +77,13 @@ Item {
             }
 
             Label {
-                text: "Autosteer (Beta)"
+                text: "Autosteer"
                 Layout.fillWidth: true
                 font.pixelSize: 20
                 font.family: "Montserrat"
                 verticalAlignment: Image.AlignVCenter
                 Layout.alignment: Qt.AlignVCenter
-                color: Theme.fontColor
+                color: Theme.colors.text
             }
         }
 
@@ -102,7 +101,7 @@ Item {
                 font.family: "Montserrat"
                 verticalAlignment: Image.AlignVCenter
                 Layout.alignment: Qt.AlignVCenter
-                color: Theme.fontColor
+                color: Theme.colors.text
             }
         }
     }
