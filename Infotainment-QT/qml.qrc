@@ -139,5 +139,6 @@
         <file>Icons/maxLimit.svg</file>
         <file>Icons/Rectangle 4.svg</file>
         <file>Icons/Subtract.svg</file>
+        <file>Image/Background.png</file>
     </qresource>
 </RCC>

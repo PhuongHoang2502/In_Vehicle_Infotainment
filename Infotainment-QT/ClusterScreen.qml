@@ -5,11 +5,16 @@ import "./Components"
 
 Rectangle {
     id: clusterScreen
-    color: Theme.currentTheme === "dark" ? "#0E0E0E" : "#F1F1F1"
+    color: Theme.currentTheme === "dark" ? "#0E0E0E" : "#grey"
 
     // Define signals for navigation
     signal navigateToHome()
     signal navigateToNavigation()
+
+    Image{
+        anchors.fill:parent
+        source: "qrc:/Image/Background.png"
+    }
 
     Header {
         id: header
@@ -160,7 +165,7 @@ Rectangle {
         Gauge {
             id:rightGauge
             speedColor: currentTheme === "dark" ? "#01a1e6" : "#e60101" //"#01E6DC" : "#01E6DC"
-            speedUnit: "RPM"
+//            speedUnit.text: "RPM"
             anchors{
                 verticalCenter: parent.verticalCenter
                 right: parent.right

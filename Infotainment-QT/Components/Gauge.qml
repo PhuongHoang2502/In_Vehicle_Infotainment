@@ -10,7 +10,6 @@ CircularGauge {
     id: gauge
 
     property string speedColor: "yellow" //"#32D74B"
-
     // Define the radius and angle for the arc
     property real arcAngle: 180  // Angle in degrees
     property real arcRadius: 90

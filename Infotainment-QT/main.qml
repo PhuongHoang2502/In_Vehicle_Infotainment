@@ -95,13 +95,13 @@ ApplicationWindow {
         }
     }
 
-    Component {
-        id: navigationScreen
-        NavigationScreen {
-            onNavigateToHome: stackView.replace(homeScreen)
-            onNavigateToCluster: stackView.replace(clusterScreen)
-        }
-    }
+//    Component {
+//        id: navigationScreen
+//        NavigationScreen {
+//            onNavigateToHome: stackView.replace(homeScreen)
+//            onNavigateToCluster: stackView.replace(clusterScreen)
+//        }
+//    }
     //quick open
     Component.onCompleted: {
         stackView.push(clusterScreen)
