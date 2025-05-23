@@ -86,6 +86,7 @@ Rectangle {
             }
 
             Label {
+                id: separator
                 text: "|"
                 font {
                     pixelSize: 22

@@ -9,7 +9,37 @@ import QtGraphicalEffects 1.0
 CircularGauge {
     id: gauge
 
+    // Customizable properties
     property string speedColor: "yellow" //"#32D74B"
+    property string speedUnit: "km/h"     // Default unit text
+    property string displayText: value.toFixed(0) // Default display text (the value)
+    property real textSize: 65            // Size of the main value text
+    property real unitTextSize: 18        // Size of the unit text
+    property string textColor: "#FFFFFF"  // Color of the main text
+    property real unitOpacity: 0.4        // Opacity of the unit text
+    
+    // Colors for the gradient arcs
+    property var gradientColors: [
+        "#6369FF",  // Start color
+        "#63FFFF",  // Second color
+        "#FFFF00",  // Third color
+        "#FF0000"   // End color
+    ]
+    
+    // Add a property to trigger repaint when needed
+    property int colorUpdateTrigger: 0
+    
+    function updateColors() {
+        // Increment trigger to force repaint
+        colorUpdateTrigger++;
+    }
+    
+    // Background arc color
+    property var backgroundArcColor: "#163546"
+    
+    // Scale line color
+    property var scaleLineColor: "#B8FF01"
+    
     // Define the radius and angle for the arc
     property real arcAngle: 180  // Angle in degrees
     property real arcRadius: 90
@@ -70,13 +100,13 @@ CircularGauge {
 
                     // Define the gradient colors for the filled arc
                     var gradientColors = [
-                                "#B8FF01",// Start color
-                                "#B8FF01",    // End color
+                                gauge.scaleLineColor,// Start color
+                                gauge.scaleLineColor,    // End color
                             ];
 
                     // Calculate the start and end angles for the filled arc
                     var startAngle = valueToAngle(gauge.minimumValue) - 90;
-                    var endAngle = valueToAngle(250) - 90;
+                    var endAngle = valueToAngle(gauge.maximumValue) - 90;
 
                     // Create a linear gradient
                     var gradient = createLinearGradient(ctx, { x: 0, y: 0 }, { x: outerRadius * 2, y: 0 }, gradientColors);
@@ -122,13 +152,13 @@ CircularGauge {
 
                     // Define the gradient colors for the filled arc
                     var gradientColors = [
-                                "#163546",// Start color
-                                "#163546",    // End color
+                                gauge.backgroundArcColor,// Start color
+                                gauge.backgroundArcColor,    // End color
                             ];
 
                     // Calculate the start and end angles for the filled arc
                     var startAngle = valueToAngle(gauge.minimumValue) - 90;
-                    var endAngle = valueToAngle(250) - 90;
+                    var endAngle = valueToAngle(gauge.maximumValue) - 90;
 
                     // Create a linear gradient
                     var gradient = createLinearGradient(ctx, { x: 0, y: 0 }, { x: outerRadius * 2, y: 0 }, gradientColors);
@@ -154,9 +184,11 @@ CircularGauge {
 
             Canvas {
                 property int value: gauge.value
+                property int colorUpdate: gauge.colorUpdateTrigger // Add reference to trigger
 
                 anchors.fill: parent
                 onValueChanged: requestPaint()
+                onColorUpdateChanged: requestPaint() // Repaint when trigger changes
 
                 function degreesToRadians(degrees) {
                     return degrees * (Math.PI / 180);
@@ -174,25 +206,17 @@ CircularGauge {
                     var ctx = getContext("2d");
                     ctx.reset();
 
-                    // Define the gradient colors for the filled arc
-                    var gradientColors = [
-                                "#6369FF",// Start color
-                                "#63FFFF",    // End color
-                                "#FFFF00",
-                                "#FF0000"
-                            ];
-
                     // Calculate the start and end angles for the filled arc
                     var startAngle = valueToAngle(gauge.minimumValue) - 90;
                     var endAngle = valueToAngle(gauge.value) - 90;
 
                     // Create a linear gradient
-                    var gradient = createLinearGradient(ctx, { x: 0, y: 0 }, { x: outerRadius * 2, y: 0 }, gradientColors);
+                    var gradient = createLinearGradient(ctx, { x: 0, y: 0 }, { x: outerRadius * 2, y: 0 }, gauge.gradientColors);
 
                     // Loop through the gradient colors and fill the arc segment with each color
-                    for (var i = 0; i < gradientColors.length; i++) {
-                        var gradientColor = gradientColors[i];
-                        var angle = startAngle + (endAngle - startAngle) * (i / (gradientColors.length - 1));
+                    for (var i = 0; i < gauge.gradientColors.length; i++) {
+                        var gradientColor = gauge.gradientColors[i];
+                        var angle = startAngle + (endAngle - startAngle) * (i / (gauge.gradientColors.length - 1));
 
                         ctx.beginPath();
                         ctx.lineWidth = outerRadius * 0.15;
@@ -251,21 +275,21 @@ CircularGauge {
                         ColumnLayout{
                             anchors.centerIn: parent
                             Label{
-                                text: gauge.value.toFixed(0)
-                                font.pixelSize: 65
+                                text: gauge.displayText
+                                font.pixelSize: gauge.textSize
                                 font.family: "Inter"
-                                color: "#FFFFFF"
+                                color: gauge.textColor
                                 font.bold: Font.DemiBold
                                 Layout.alignment: Qt.AlignHCenter
                             }
 
                             Label{
-                                id: speedUnit
-                                text: "km/h"
-                                font.pixelSize: 18
+                                id: speedUnitLabel
+                                text: gauge.speedUnit
+                                font.pixelSize: gauge.unitTextSize
                                 font.family: "Inter"
-                                color: "#FFFFFF"
-                                opacity: 0.4
+                                color: gauge.textColor
+                                opacity: gauge.unitOpacity
                                 font.bold: Font.Normal
                                 Layout.alignment: Qt.AlignHCenter
                             }

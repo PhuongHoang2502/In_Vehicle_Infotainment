@@ -29,7 +29,7 @@ private:
     float m_temperature;
     int m_humidity;
     int m_distance;
-    bool m_buzzerMode;
+    int m_buzzerMode;
     bool m_leftTurn;
     bool m_rightTurn;
     int m_headlight;
